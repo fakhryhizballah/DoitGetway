@@ -15,7 +15,23 @@ class TBReader extends Migration
 				'unsigned'       => TRUE,
 				'auto_increment' => TRUE
 			],
-			'ID_User'       => [
+			'ID_Reader'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'ID_Card'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Info'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Command'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Nominal'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],

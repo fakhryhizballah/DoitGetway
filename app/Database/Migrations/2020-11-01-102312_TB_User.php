@@ -19,6 +19,39 @@ class TBUser extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
+			'Username'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Email'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Nama_Depan'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Nama_Belakang'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
+			],
+			'Password'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Telp'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Saldo'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Poto'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
 
 			'created_at'       => [
 				'type'           => 'DATETIME',

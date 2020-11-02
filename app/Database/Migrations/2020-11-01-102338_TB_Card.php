@@ -15,9 +15,28 @@ class TBCard extends Migration
 				'unsigned'       => TRUE,
 				'auto_increment' => TRUE
 			],
+			'ID_Card'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
 			'ID_User'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
+				'null'           => TRUE,
+			],
+			'Saldo'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+			],
+			'Jenis'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
+			],
+			'Status'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
 			],
 
 			'created_at'       => [
