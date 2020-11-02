@@ -19,6 +19,16 @@ class TBHistori extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
+			'To_Name'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
+			],
+			'Status'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
+			],
 			'Mod_Trans'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
@@ -26,6 +36,7 @@ class TBHistori extends Migration
 			'Ket'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
+				'null'           => TRUE,
 			],
 			'Nominal'       => [
 				'type'           => 'VARCHAR',
