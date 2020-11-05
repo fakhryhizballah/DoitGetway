@@ -23,7 +23,7 @@ class User extends BaseController
     public function riwayat()
     {
         $data = [
-            'title' => 'My Card - DoIt by Spairum',
+            'title' => 'Riwayat - DoIt by Spairum',
             'validation' => \Config\Services::validation()
         ];
         return view('User/riwayat', $data);
