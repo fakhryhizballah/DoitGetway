@@ -7,10 +7,10 @@ class User extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Login - DoIt by Spairum',
+            'title' => 'Home - DoIt by Spairum',
             'validation' => \Config\Services::validation()
         ];
-        return view('Auth/Login', $data);
+        return view('User/Home', $data);
     }
 
 
