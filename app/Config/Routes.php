@@ -32,6 +32,8 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'User::index');
+$routes->get('/mycard', 'User::card');
+
 $routes->get('/login', 'Auth::index');
 $routes->get('/daftar', 'Auth::registrasi');
 

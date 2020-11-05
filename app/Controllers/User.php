@@ -12,6 +12,14 @@ class User extends BaseController
         ];
         return view('User/Home', $data);
     }
+    public function card()
+    {
+        $data = [
+            'title' => 'My Card - DoIt by Spairum',
+            'validation' => \Config\Services::validation()
+        ];
+        return view('User/card', $data);
+    }
 
 
     //--------------------------------------------------------------------
