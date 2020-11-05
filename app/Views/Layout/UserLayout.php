@@ -56,13 +56,13 @@
                 <strong>Dompet Saya</strong>
             </div>
         </a>
-        <a href="#" class="item">
+        <a href="/mycard" class="item">
             <div class="col">
                 <ion-icon name="card-outline"></ion-icon>
                 <strong>My Cards</strong>
             </div>
         </a>
-        <a href="#" class="item">
+        <a href="/riwayat" class="item">
             <div class="col">
                 <ion-icon name="document-text-outline"></ion-icon>
                 <strong>Riwayat</strong>
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="item">
+                            <a href="/mycard" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="card-outline"></ion-icon>
                                 </div>
@@ -167,7 +167,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="item">
+                            <a href="/mycard" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="document-text-outline"></ion-icon>
                                 </div>
@@ -180,7 +180,7 @@
                     <!-- * menu -->
 
                     <!-- others -->
-                    <div class="listview-title mt-1">Others</div>
+                    <div class="listview-title mt-1">Lainnya</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
                             <a href="#" class="item">
@@ -223,7 +223,8 @@
 
     <!-- ///////////// Js Files ////////////////////  -->
     <!-- Jquery -->
-    <script src="assets/js/lib/jquery-3.4.1.min.js"></script>
+    <!-- <script src="assets/js/lib/jquery-3.4.1.min.js"></script> -->
+    <script src="assets/js/lib/jquery-3.5.1.min.js"></script>
     <!-- Bootstrap-->
     <script src="assets/js/lib/popper.min.js"></script>
     <script src="assets/js/lib/bootstrap.min.js"></script>
