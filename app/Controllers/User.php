@@ -20,6 +20,14 @@ class User extends BaseController
         ];
         return view('User/card', $data);
     }
+    public function riwayat()
+    {
+        $data = [
+            'title' => 'My Card - DoIt by Spairum',
+            'validation' => \Config\Services::validation()
+        ];
+        return view('User/riwayat', $data);
+    }
 
 
     //--------------------------------------------------------------------
