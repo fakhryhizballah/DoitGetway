@@ -50,36 +50,30 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-        <a href="app-index.html" class="item active">
+        <a href="/" class="item active">
             <div class="col">
-                <ion-icon name="pie-chart-outline"></ion-icon>
-                <strong>Overview</strong>
+                <ion-icon name="wallet-outline"></ion-icon>
+                <strong>Dompet Saya</strong>
             </div>
         </a>
-        <a href="app-pages.html" class="item">
-            <div class="col">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <strong>Pages</strong>
-            </div>
-        </a>
-        <a href="app-components.html" class="item">
-            <div class="col">
-                <ion-icon name="apps-outline"></ion-icon>
-                <strong>Components</strong>
-            </div>
-        </a>
-        <a href="app-cards.html" class="item">
+        <a href="#" class="item">
             <div class="col">
                 <ion-icon name="card-outline"></ion-icon>
                 <strong>My Cards</strong>
             </div>
         </a>
-        <a href="javascript:;" class="item" data-toggle="modal" data-target="#sidebarPanel">
+        <a href="#" class="item">
+            <div class="col">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <strong>Riwayat</strong>
+            </div>
+        </a>
+        <!-- <a href="javascript:;" class="item" data-toggle="modal" data-target="#sidebarPanel">
             <div class="col">
                 <ion-icon name="menu-outline"></ion-icon>
                 <strong>Menu</strong>
             </div>
-        </a>
+        </a> -->
     </div>
     <!-- * App Bottom Menu -->
 
@@ -102,14 +96,14 @@
                         </a>
                     </div>
                     <!-- * profile box -->
-                    <!-- balance -->
+                    <!-- Saldo -->
                     <div class="sidebar-balance">
-                        <div class="listview-title">Balance</div>
+                        <div class="listview-title">Total Saldo</div>
                         <div class="in">
                             <h1 class="amount">$ 2,562.50</h1>
                         </div>
                     </div>
-                    <!-- * balance -->
+                    <!-- * saldo -->
 
                     <!-- action group -->
                     <div class="action-group">
@@ -118,7 +112,7 @@
                                 <div class="iconbox">
                                     <ion-icon name="add-outline"></ion-icon>
                                 </div>
-                                Deposit
+                                Isi Saldo
                             </div>
                         </a>
                         <a href="app-index.html" class="action-button">
@@ -126,7 +120,7 @@
                                 <div class="iconbox">
                                     <ion-icon name="arrow-down-outline"></ion-icon>
                                 </div>
-                                Withdraw
+                                Terima
                             </div>
                         </a>
                         <a href="app-index.html" class="action-button">
@@ -134,7 +128,7 @@
                                 <div class="iconbox">
                                     <ion-icon name="arrow-forward-outline"></ion-icon>
                                 </div>
-                                Send
+                                Bayar
                             </div>
                         </a>
                         <a href="app-cards.html" class="action-button">
@@ -152,43 +146,33 @@
                     <div class="listview-title mt-1">Menu</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
-                            <a href="app-index.html" class="item">
+                            <a href="/" class="item">
                                 <div class="icon-box bg-primary">
-                                    <ion-icon name="pie-chart-outline"></ion-icon>
+                                    <ion-icon name="wallet-outline"></ion-icon>
                                 </div>
                                 <div class="in">
-                                    Overview
-                                    <span class="badge badge-primary">10</span>
+                                    Dompet Saya
+                                    <!-- <span class="badge badge-primary">10</span> -->
                                 </div>
                             </a>
                         </li>
                         <li>
-                            <a href="app-pages.html" class="item">
-                                <div class="icon-box bg-primary">
-                                    <ion-icon name="document-text-outline"></ion-icon>
-                                </div>
-                                <div class="in">
-                                    Pages
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="app-components.html" class="item">
-                                <div class="icon-box bg-primary">
-                                    <ion-icon name="apps-outline"></ion-icon>
-                                </div>
-                                <div class="in">
-                                    Components
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="app-cards.html" class="item">
+                            <a href="#" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="card-outline"></ion-icon>
                                 </div>
                                 <div class="in">
                                     My Cards
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="item">
+                                <div class="icon-box bg-primary">
+                                    <ion-icon name="document-text-outline"></ion-icon>
+                                </div>
+                                <div class="in">
+                                    Riwayat
                                 </div>
                             </a>
                         </li>
@@ -199,7 +183,7 @@
                     <div class="listview-title mt-1">Others</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
-                            <a href="app-settings.html" class="item">
+                            <a href="#" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="settings-outline"></ion-icon>
                                 </div>
@@ -209,7 +193,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="component-messages.html" class="item">
+                            <a href="#" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="chatbubble-outline"></ion-icon>
                                 </div>
@@ -219,7 +203,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="app-login.html" class="item">
+                            <a href="#" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="log-out-outline"></ion-icon>
                                 </div>
@@ -230,36 +214,6 @@
                         </li>
                     </ul>
                     <!-- * others -->
-
-                    <!-- send money -->
-                    <div class="listview-title mt-1">Send Money</div>
-                    <ul class="listview image-listview flush transparent no-line">
-                        <li>
-                            <a href="#" class="item">
-                                <img src="assets/img/sample/avatar/avatar2.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Artem Sazonov</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="item">
-                                <img src="assets/img/sample/avatar/avatar4.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Sophie Asveld</div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="item">
-                                <img src="assets/img/sample/avatar/avatar3.jpg" alt="image" class="image">
-                                <div class="in">
-                                    <div>Kobus van de Vegte</div>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- * send money -->
 
                 </div>
             </div>
