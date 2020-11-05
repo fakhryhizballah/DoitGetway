@@ -25,36 +25,79 @@
         <h4>Fill the form to register</h4>
     </div>
     <div class="section mt-2 mb-5 p-3">
-        <form action="#">
+        <form action="#" method="POST">
+            <?= csrf_field(); ?>
             <div class="form-group basic">
                 <div class="input-wrapper">
-                    <label class="label" for="email1">E-mail</label>
-                    <input type="email" class="form-control" id="email1" placeholder="Your e-mail">
+                    <label class="label" for="usrname">Username</label>
+                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?> " id="username" name="username" placeholder="Username">
+                    <div class="invalid-feedback"><?= $validation->getError('username'); ?></div>
+                    <i class="clear-input">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="nama_depan">Nama Depan</label>
+                    <input type="text" class="form-control <?= ($validation->hasError('nama_depan')) ? 'is-invalid' : ''; ?> " id="nama_depan" name="nama_depan" placeholder="Nama Depan">
+                    <div class="invalid-feedback"><?= $validation->getError('nama_depan'); ?></div>
+                    <i class="clear-input">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="nama_belakang">Nama Belakang</label>
+                    <input type="text" class="form-control <?= ($validation->hasError('nama_belakang')) ? 'is-invalid' : ''; ?> " id="nama_belakang" name="nama_belakang" placeholder="Nama Belakang">
+                    <div class="invalid-feedback"><?= $validation->getError('nama_belakang'); ?></div>
+                    <i class="clear-input">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="email">E-mail</label>
+                    <input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?> " id="email" name="email" placeholder="E-mail">
+                    <div class="invalid-feedback"><?= $validation->getError('email'); ?></div>
+                    <i class="clear-input">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="Telp">Nomor Telpon</label>
+                    <input type="number" class="form-control <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?> " id="telp" name="telp" placeholder="telp">
+                    <div class="invalid-feedback"><?= $validation->getError('telp'); ?></div>
+                    <i class="clear-input">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="password">Password</label>
+                    <input type="password" class="form-control <?= ($validation->hasError('password1')) ? 'is-invalid' : ''; ?> " id="password1" name="password1" placeholder="Password anda">
+                    <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
+                    <i class="clear-input">
+                        <ion-icon name="close-circle"></ion-icon>
+                    </i>
+                </div>
+            </div>
+            <div class="form-group basic">
+                <div class="input-wrapper">
+                    <label class="label" for="password">Ulangi Password</label>
+                    <input type="password" class="form-control <?= ($validation->hasError('password1')) ? 'is-invalid' : ''; ?> " id="password1" name="password1" placeholder="Ulangi password anda">
+                    <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
                 </div>
             </div>
 
-            <div class="form-group basic">
-                <div class="input-wrapper">
-                    <label class="label" for="password1">Password</label>
-                    <input type="password" class="form-control" id="password1" placeholder="Your password">
-                    <i class="clear-input">
-                        <ion-icon name="close-circle"></ion-icon>
-                    </i>
-                </div>
-            </div>
-
-            <div class="form-group basic">
-                <div class="input-wrapper">
-                    <label class="label" for="password2">Password Again</label>
-                    <input type="password" class="form-control" id="password2" placeholder="Type password again">
-                    <i class="clear-input">
-                        <ion-icon name="close-circle"></ion-icon>
-                    </i>
-                </div>
-            </div>
 
             <div class="custom-control custom-checkbox mt-2">
                 <input type="checkbox" class="custom-control-input" id="customChecka1">
