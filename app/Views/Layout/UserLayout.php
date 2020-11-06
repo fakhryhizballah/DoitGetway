@@ -50,7 +50,7 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-        <a href="/" class="item active">
+        <a href="/" class="item">
             <div class="col">
                 <ion-icon name="wallet-outline"></ion-icon>
                 <strong>Dompet Saya</strong>
@@ -146,7 +146,7 @@
                     <div class="listview-title mt-1">Menu</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
-                            <a href="/" class="item">
+                            <a href="/" class="item ">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="wallet-outline"></ion-icon>
                                 </div>
@@ -157,7 +157,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/mycard" class="item">
+                            <a href="/mycard" class="item ">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="card-outline"></ion-icon>
                                 </div>
@@ -234,6 +234,8 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/base.js"></script>
+    <!-- custom javascript -->
+    <script src="assets/js/script.js"></script>
 
 
 </body>
