@@ -7,8 +7,8 @@
         <!-- Balance -->
         <div class="balance">
             <div class="left">
-                <span class="title">Total Balance</span>
-                <h1 class="total">$ 2,562.50</h1>
+                <span class="title">Total Saldo</span>
+                <h1 class="total">Rp. 2,562.50</h1>
             </div>
             <div class="right">
                 <a href="#" class="button" data-toggle="modal" data-target="#depositActionSheet">
@@ -24,7 +24,7 @@
                     <div class="icon-wrapper bg-danger">
                         <ion-icon name="arrow-down-outline"></ion-icon>
                     </div>
-                    <strong>Withdraw</strong>
+                    <strong>Terima</strong>
                 </a>
             </div>
             <div class="item">
@@ -32,7 +32,7 @@
                     <div class="icon-wrapper">
                         <ion-icon name="arrow-forward-outline"></ion-icon>
                     </div>
-                    <strong>Send</strong>
+                    <strong>Bayar</strong>
                 </a>
             </div>
             <div class="item">
@@ -90,7 +90,6 @@
                         </div>
 
 
-
                         <div class="form-group basic">
                             <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Deposit</button>
                         </div>
@@ -144,7 +143,6 @@
                         </div>
 
 
-
                         <div class="form-group basic">
                             <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Deposit</button>
                         </div>
@@ -159,32 +157,32 @@
 <!-- Stats -->
 <div class="section">
     <div class="row mt-2">
-        <div class="col-6">
+        <div class="col-7">
             <div class="stat-box">
-                <div class="title">Income</div>
-                <div class="value text-success">$ 552.95</div>
+                <div class="title">Saldo Dompet</div>
+                <div class="value text-success">Rp 5525</div>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-5">
             <div class="stat-box">
-                <div class="title">Expenses</div>
-                <div class="value text-danger">$ 86.45</div>
+                <div class="title">Total Card</div>
+                <div class="value text-danger"> 5</div>
             </div>
         </div>
     </div>
     <div class="row mt-2">
-        <div class="col-6">
+        <div class="col-12">
             <div class="stat-box">
-                <div class="title">Total Bills</div>
-                <div class="value">$ 53.25</div>
+                <div class="title">Total Saldo Card</div>
+                <div class="value">Rp 53.25</div>
             </div>
         </div>
-        <div class="col-6">
+        <!-- <div class="col-6">
             <div class="stat-box">
                 <div class="title">Savings</div>
                 <div class="value">$ 120.99</div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 <!-- * Stats -->
@@ -194,10 +192,11 @@
 <div class="section full mt-4">
     <div class="section-heading padding">
         <h2 class="title">My Cards</h2>
-        <a href="app-cards.html" class="link">View All</a>
+        <a href="/mycard" class="link">View All</a>
     </div>
     <div class="carousel-single owl-carousel owl-theme shadowfix">
         <div class="item">
+
             <!-- card block -->
             <div class="card-block bg-primary">
                 <div class="card-main">
@@ -218,32 +217,23 @@
                         </div>
                     </div>
                     <div class="balance">
-                        <span class="label">BALANCE</span>
-                        <h1 class="title">$ 1,256,90</h1>
+                        <span class="label">Saldo</span>
+                        <h1 class="title">Rp 1,256,90</h1>
                     </div>
                     <div class="in">
                         <div class="card-number">
-                            <span class="label">Card Number</span>
-                            9905 0903 0234 9905
-                        </div>
-                        <div class="bottom">
-                            <div class="card-expiry">
-                                <span class="label">Expiry</span>
-                                12 / 25
-                            </div>
-                            <div class="card-ccv">
-                                <span class="label">CCV</span>
-                                553
-                            </div>
+                            <span class="label">Tipe Kartu</span>
+                            Kartu Tanda Penduduk
                         </div>
                     </div>
                 </div>
             </div>
             <!-- * card block -->
         </div>
+
         <div class="item">
             <!-- card block -->
-            <div class="card-block bg-dark">
+            <div class="card-block">
                 <div class="card-main">
                     <div class="card-button dropdown">
                         <button type="button" class="btn btn-link btn-icon" data-toggle="dropdown">
@@ -267,68 +257,15 @@
                     </div>
                     <div class="in">
                         <div class="card-number">
-                            <span class="label">Card Number</span>
-                            9905 0903 0234 9905
-                        </div>
-                        <div class="bottom">
-                            <div class="card-expiry">
-                                <span class="label">Expiry</span>
-                                12 / 25
-                            </div>
-                            <div class="card-ccv">
-                                <span class="label">CCV</span>
-                                553
-                            </div>
+                            <span class="label">Tipe Kartu</span>
+                            White Card
                         </div>
                     </div>
                 </div>
             </div>
             <!-- * card block -->
         </div>
-        <div class="item">
-            <!-- card block -->
-            <div class="card-block bg-secondary">
-                <div class="card-main">
-                    <div class="card-button dropdown">
-                        <button type="button" class="btn btn-link btn-icon" data-toggle="dropdown">
-                            <ion-icon name="ellipsis-horizontal"></ion-icon>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="javacript:;">
-                                <ion-icon name="pencil-outline"></ion-icon>Edit
-                            </a>
-                            <a class="dropdown-item" href="javacript:;">
-                                <ion-icon name="close-outline"></ion-icon>Remove
-                            </a>
-                            <a class="dropdown-item" href="javacript:;">
-                                <ion-icon name="arrow-up-circle-outline"></ion-icon>Upgrade
-                            </a>
-                        </div>
-                    </div>
-                    <div class="balance">
-                        <span class="label">BALANCE</span>
-                        <h1 class="title">$ 1,256,90</h1>
-                    </div>
-                    <div class="in">
-                        <div class="card-number">
-                            <span class="label">Card Number</span>
-                            9905 0903 0234 9905
-                        </div>
-                        <div class="bottom">
-                            <div class="card-expiry">
-                                <span class="label">Expiry</span>
-                                12 / 25
-                            </div>
-                            <div class="card-ccv">
-                                <span class="label">CCV</span>
-                                553
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- * card block -->
-        </div>
+
     </div>
 </div>
 <!-- * my cards -->
