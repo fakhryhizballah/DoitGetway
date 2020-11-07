@@ -75,6 +75,6 @@ class OTP extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('TB_User');
+		$this->forge->dropTable('OTP');
 	}
 }

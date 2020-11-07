@@ -9,21 +9,21 @@ class TBReader extends Migration
 	public function up()
 	{
 		$this->forge->addField([
-			'id'          => [
+			'id'          	=> [
 				'type'           => 'INT',
 				'constraint'     => 11,
 				'unsigned'       => TRUE,
 				'auto_increment' => TRUE
 			],
-			'ID_Reader'       => [
+			'ID_Reader'    	=> [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
-			'ID_Card'       => [
+			'ID_Card'   	=> [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
-			'Info'       => [
+			'Info'       	=> [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
@@ -35,12 +35,11 @@ class TBReader extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
-
-			'created_at'       => [
+			'created_at'    => [
 				'type'           => 'DATETIME',
 				'null'           => TRUE,
 			],
-			'updated_at'       => [
+			'updated_at'    => [
 				'type'           => 'DATETIME',
 				'null'           => TRUE,
 			],
@@ -53,6 +52,6 @@ class TBReader extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('TB_Histori');
+		$this->forge->dropTable('TB_Reader');
 	}
 }

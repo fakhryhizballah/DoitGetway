@@ -52,7 +52,6 @@ class TBUser extends Migration
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],
-
 			'created_at'       => [
 				'type'           => 'DATETIME',
 				'null'           => TRUE,

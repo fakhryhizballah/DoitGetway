@@ -15,7 +15,7 @@ class TBHistori extends Migration
 				'unsigned'       => TRUE,
 				'auto_increment' => TRUE
 			],
-			'ID_User.Card'       => [
+			'ID_User_Card'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
 			],

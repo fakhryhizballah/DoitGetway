@@ -85,6 +85,6 @@ class TBMerchant extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('TB_User');
+		$this->forge->dropTable('TB_Merchant');
 	}
 }
