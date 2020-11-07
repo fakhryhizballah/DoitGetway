@@ -30,7 +30,7 @@
             </a>
         </div>
         <div class="pageTitle">
-            <img src="assets/img/logo.png" alt="logo" class="logo">
+            <img src="assets/img/spairum-logo.svg" alt="logo" class="logo">
         </div>
         <div class="right">
             <a href="#" class="headerButton">
