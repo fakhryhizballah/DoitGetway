@@ -9,7 +9,7 @@
     </div>
     <div class="pageTitle"></div>
     <div class="right">
-        <a href="app-login.html" class="headerButton">
+        <a href="/login" class="headerButton">
             Login
         </a>
     </div>
@@ -25,7 +25,7 @@
         <h4>Fill the form to register</h4>
     </div>
     <div class="section mt-2 mb-5 p-3">
-        <form action="#" method="POST">
+        <form action="Auth/otpregis" method="POST">
             <?= csrf_field(); ?>
             <div class="form-group basic">
                 <div class="input-wrapper">
@@ -81,7 +81,7 @@
                 <div class="input-wrapper">
                     <label class="label" for="password">Password</label>
                     <input type="password" class="form-control <?= ($validation->hasError('password1')) ? 'is-invalid' : ''; ?> " id="password1" name="password1" placeholder="Password anda">
-                    <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
+                    <div class="invalid-feedback"><?= $validation->getError('password1'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -90,8 +90,8 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="password">Ulangi Password</label>
-                    <input type="password" class="form-control <?= ($validation->hasError('password1')) ? 'is-invalid' : ''; ?> " id="password1" name="password1" placeholder="Ulangi password anda">
-                    <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
+                    <input type="password" class="form-control <?= ($validation->hasError('password2')) ? 'is-invalid' : ''; ?> " id="password2" name="password2" placeholder="Ulangi password anda">
+                    <div class="invalid-feedback"><?= $validation->getError('password2'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -100,7 +100,7 @@
 
 
             <div class="custom-control custom-checkbox mt-2">
-                <input type="checkbox" class="custom-control-input" id="customChecka1">
+                <input type="checkbox" name="customChecka1" class="custom-control-input" id="customChecka1" required>
                 <label class="custom-control-label" for="customChecka1">
                     Saya Menyetujiui <a href="#" data-toggle="modal" data-target="#termsModal">Syarat dan ketentuan</a>
                 </label>
