@@ -20,15 +20,15 @@ class OtpModel extends Model
         'Telp',
         'password',
         'Saldo',
-        'link',
+        'Link',
         'Status',
 
     ];
 
-    public function cek($link)
+    public function cek($Link)
     {
         return $this->db->table('otp')
-            ->where(array('link' => $link))
+            ->where(array('Link' => $Link))
             ->get()->getRowArray();
     }
 }

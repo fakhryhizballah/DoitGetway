@@ -30,7 +30,7 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="usrname">Username</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?> " id="username" name="username" placeholder="Username">
+                    <input type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?> " id="username" name="username" placeholder="Username" value="<?= old('username'); ?>">
                     <div class="invalid-feedback"><?= $validation->getError('username'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
@@ -40,7 +40,7 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="nama_depan">Nama Depan</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('nama_depan')) ? 'is-invalid' : ''; ?> " id="nama_depan" name="nama_depan" placeholder="Nama Depan">
+                    <input type="text" class="form-control <?= ($validation->hasError('nama_depan')) ? 'is-invalid' : ''; ?> " id="nama_depan" name="nama_depan" placeholder="Nama Depan" value="<?= old('nama_depan'); ?>">
                     <div class="invalid-feedback"><?= $validation->getError('nama_depan'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
@@ -50,7 +50,7 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="nama_belakang">Nama Belakang</label>
-                    <input type="text" class="form-control <?= ($validation->hasError('nama_belakang')) ? 'is-invalid' : ''; ?> " id="nama_belakang" name="nama_belakang" placeholder="Nama Belakang">
+                    <input type="text" class="form-control <?= ($validation->hasError('nama_belakang')) ? 'is-invalid' : ''; ?> " id="nama_belakang" name="nama_belakang" placeholder="Nama Belakang" value="<?= old('nama_belakang'); ?>">
                     <div class="invalid-feedback"><?= $validation->getError('nama_belakang'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
@@ -60,7 +60,7 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="email">E-mail</label>
-                    <input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?> " id="email" name="email" placeholder="E-mail">
+                    <input type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?> " id="email" name="email" placeholder="E-mail" value="<?= old('email'); ?>">
                     <div class="invalid-feedback"><?= $validation->getError('email'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
@@ -70,7 +70,7 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="Telp">Nomor Telpon</label>
-                    <input type="number" class="form-control <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?> " id="telp" name="telp" placeholder="telp">
+                    <input type="number" class="form-control <?= ($validation->hasError('telp')) ? 'is-invalid' : ''; ?> " id="telp" name="telp" placeholder="telp" value="<?= old('telp'); ?>">
                     <div class="invalid-feedback"><?= $validation->getError('telp'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>

@@ -3,12 +3,14 @@
 namespace App\Controllers;
 
 use App\Models\OtpModel;
+use App\Models\UserModel;
 
 class Auth extends BaseController
 {
     public function __construct()
     {
         $this->OtpModel = new OtpModel();
+        $this->UserModel = new UserModel();
         $this->email = \Config\Services::email();
     }
     public function index()
@@ -109,73 +111,100 @@ class Auth extends BaseController
             'Telp' => $this->request->getVar('telp'),
             'password' => password_hash($this->request->getVar('password1'), PASSWORD_BCRYPT),
             'Saldo' => '0',
-            'link' => $token,
+            'Link' => $token,
             'Status' => 'Belum Verivikasi',
         ]);
         session()->setFlashdata('flash', 'Silakan cek kotak masuk email atau spam untuk verifikasi.');
-        return redirect()->to('/');
-        $this->email->setFrom('support@apps.spairum.com', 'noreply-spairum');
+        return redirect()->to('/login');
+        $this->email->setFrom('support@spairum.com', 'noreply-spairum');
         $this->email->setTo($email);
         $this->email->setSubject('OTP Verification Akun');
         $this->email->setMessage(
             "   
-<table align='center' cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#f0f0f0'>
-<tr>
-<td style='padding: 30px 30px 20px 30px;'>
-    <table cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#ffffff' style='max-width: 650px; margin: auto;'>
-    <tr>
-        <td colspan='2' align='center' style='background-color: #0d8eff; padding: 40px;'>
-            <a href='http://spairum.com/' target='_blank'><img src='https://spairum.com/Asset/img/spairum.png' width='50%' border='0' /></a>
-        </td>
-    </tr>
-    <tr>
-        <td colspan='2' align='center' style='padding: 50px 50px 0px 50px;'>
-            <h1 style='padding-right: 0em; margin: 0; line-height: 40px; font-weight:300; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 1em;'>
-                Spairum Pay IS Email OTP
-            </h1>
-        </td>
-    </tr>
-    <tr>
-        <td style='text-align: left; padding: 0px 50px;' valign='top'>
-            <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
-                Hi $nama_depan $nama_belakang,
-            </p>
-            <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
-            Terimakasih telah mendaftar silahkan melakukan verifikasi pada tautan dibawah :
-            </p>
-            <a href='https://apps.spairum.com/otp/$token' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Verivikasi</a>
-		    <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'><br/>Selanjutnya anda dapat melakukan login ke apps.spairum.com sebagai user</p>
-        </td>
-    </tr>
-    <tr>
-        <td style='text-align: left; padding: 30px 50px 50px 50px' valign='top'>
-            <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #505050; text-align: left;'>
-                Thanks,<br/>
-            </p>
-        </td>
-    </tr>
-    <tr>
-        <td colspan='2' align='center' style='padding: 20px 40px 40px 40px;' bgcolor='#f0f0f0'>
-            <p style='font-size: 12px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #777;'>
-                &copy; 2020
-                <a href='https://spairum.com/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
-                <br>
-                Jl.Merdeka, Pontianak - Kalimantan Barat
-                <br>
-                Indonesia
-            </p>
-        </td>
-    </tr>
-    </table>
-</td>
-</tr>
-</table>
+            <table align='center' cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#f0f0f0'>
+            <tr>
+            <td style='padding: 30px 30px 20px 30px;'>
+                <table cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#ffffff' style='max-width: 650px; margin: auto;'>
+                <tr>
+                    <td colspan='2' align='center' style='background-color: #0d8eff; padding: 40px;'>
+                        <a href='http://spairum.com/' target='_blank'><img src='https://spairum.com/Asset/img/spairum.png' width='50%' border='0' /></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2' align='center' style='padding: 50px 50px 0px 50px;'>
+                        <h1 style='padding-right: 0em; margin: 0; line-height: 40px; font-weight:300; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 1em;'>
+                            Spairum Pay IS Email OTP
+                        </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='text-align: left; padding: 0px 50px;' valign='top'>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
+                            Hi $nama_depan $nama_belakang,
+                        </p>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
+                        Terimakasih telah mendaftar silahkan melakukan verifikasi pada tautan dibawah :
+                        </p>
+                        <a href='https://apps.spairum.com/otp/$token' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Verivikasi</a>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'><br/>Selanjutnya anda dapat melakukan login ke apps.spairum.com sebagai user</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='text-align: left; padding: 30px 50px 50px 50px' valign='top'>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #505050; text-align: left;'>
+                            Thanks,<br/>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2' align='center' style='padding: 20px 40px 40px 40px;' bgcolor='#f0f0f0'>
+                        <p style='font-size: 12px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #777;'>
+                            &copy; 2020
+                            <a href='https://spairum.com/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
+                            <br>
+                            Jl.Merdeka, Pontianak - Kalimantan Barat
+                            <br>
+                            Indonesia
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </td>
+            </tr>
+            </table>
             "
         );
+
         $this->email->send();
         session()->setFlashdata('flash', 'Silakan cek kotak masuk email atau spam untuk verifikasi.');
         return redirect()->to('/login');
     }
     //--------------------------------------------------------------------
+    public function otp($link)
+    {
+        $cek = $this->OtpModel->cek($link);
+        if (empty($cek)) {
+            session()->setFlashdata('gagal', 'Akun sudah di verifikasi');
+            return redirect()->to('/');
+        }
 
+        $this->UserModel->save([
+            'ID_User' => $cek['ID_User'],
+            'Username' => $cek['Username'],
+            'Email' => $cek['Email'],
+            'Nama_Depan' => $cek['Nama_Depan'],
+            'Nama_Belakang' => $cek['Nama_Belakang'],
+            'Password' => $cek['Password'],
+            'Telp' => $cek['Telp'],
+            'Saldo' => '0',
+            'Poto' => 'user.png',
+        ]);
+        $this->OtpModel->save([
+            'id' => $cek['id'],
+            'Link' => substr(sha1($cek['Link']), 0, 10),
+            'Status' => 'Tercerivikasi',
+        ]);
+        session()->setFlashdata('flash', 'Registration success silahkan login.');
+        return redirect()->to('/');
+    }
 }
