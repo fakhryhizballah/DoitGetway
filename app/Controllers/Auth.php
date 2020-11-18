@@ -22,6 +22,35 @@ class Auth extends BaseController
         return view('Auth/Login', $data);
     }
 
+    public function login()
+    {
+        // dd($this->request->getVar());
+        //validasi
+        if (!$this->validate([
+
+
+            'email' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi'
+                ]
+            ],
+            'password' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => '{field} wajid di isi'
+                ]
+            ]
+
+        ])) {
+            $validation = \config\Services::validation();
+
+            return redirect()->to('/login')->withInput()->with('validation', $validation);
+        }
+    }
+
+
+
     public function registrasi()
     {
         $data = [
@@ -114,8 +143,6 @@ class Auth extends BaseController
             'Link' => $token,
             'Status' => 'Belum Verivikasi',
         ]);
-        session()->setFlashdata('flash', 'Silakan cek kotak masuk email atau spam untuk verifikasi.');
-        return redirect()->to('/login');
         $this->email->setFrom('support@spairum.com', 'noreply-spairum');
         $this->email->setTo($email);
         $this->email->setSubject('OTP Verification Akun');
@@ -145,7 +172,7 @@ class Auth extends BaseController
                         <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
                         Terimakasih telah mendaftar silahkan melakukan verifikasi pada tautan dibawah :
                         </p>
-                        <a href='https://apps.spairum.com/otp/$token' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Verivikasi</a>
+                        <a href='https://pay.spairum.com/otp/$token' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Verivikasi</a>
                         <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'><br/>Selanjutnya anda dapat melakukan login ke apps.spairum.com sebagai user</p>
                     </td>
                 </tr>
@@ -174,9 +201,8 @@ class Auth extends BaseController
             </table>
             "
         );
-
         $this->email->send();
-        session()->setFlashdata('flash', 'Silakan cek kotak masuk email atau spam untuk verifikasi.');
+        session()->setFlashdata('Berhasil', 'Silakan cek kotak masuk email atau spam untuk verifikasi akun.');
         return redirect()->to('/login');
     }
     //--------------------------------------------------------------------
@@ -184,8 +210,8 @@ class Auth extends BaseController
     {
         $cek = $this->OtpModel->cek($link);
         if (empty($cek)) {
-            session()->setFlashdata('gagal', 'Akun sudah di verifikasi');
-            return redirect()->to('/');
+            session()->setFlashdata('Error', 'Akun sudah di verifikasi');
+            return redirect()->to('/login');
         }
 
         $this->UserModel->save([
@@ -204,7 +230,7 @@ class Auth extends BaseController
             'Link' => substr(sha1($cek['Link']), 0, 10),
             'Status' => 'Tercerivikasi',
         ]);
-        session()->setFlashdata('flash', 'Registration success silahkan login.');
-        return redirect()->to('/');
+        session()->setFlashdata('Berhasil', 'Registration success silahkan login.');
+        return redirect()->to('/login');
     }
 }

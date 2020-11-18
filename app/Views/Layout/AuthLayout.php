@@ -20,9 +20,9 @@
 <body class="bg-light">
 
     <!-- loader -->
-    <div id="loader">
+    <!-- <div id="loader">
         <img src="assets/img/logo apples.png" alt="icon" class="loading-icon">
-    </div>
+    </div> -->
     <!-- * loader -->
 
     <!-- App Header -->
@@ -47,6 +47,10 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/base.js"></script>
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="assets/js/script.js"></script>
 
 
 </body>

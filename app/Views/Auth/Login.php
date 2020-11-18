@@ -15,17 +15,19 @@
 
 <?= $this->section('Auth'); ?>
 <div id="appCapsule">
-
+    <div class="flash-Success" data-flashdata="<?= session()->getFlashdata('Berhasil'); ?>"></div>
+    <div class="flash-Error" data-flashdata="<?= session()->getFlashdata('Error'); ?>"></div>
     <div class="section mt-2 text-center">
         <h1>Login</h1>
         <h4>Silahkan Masuk</h4>
     </div>
     <div class="section mt-2 mb-5 p-3">
-        <form action="#">
+        <form action="Auth/login" method="POST">
             <div class="form-group basic">
                 <div class="input-wrapper">
-                    <label class="label" for="email1">E-mail</label>
-                    <input type="email" class="form-control" id="email1" placeholder="Username/e-mail">
+                    <label class="label" for="email1">E-mail / Username</label>
+                    <input type="text" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Username/e-mail" value="<?= old('email'); ?>">
+                    <div class="invalid-feedback"><?= $validation->getError('email'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
@@ -35,25 +37,26 @@
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="password1">Password</label>
-                    <input type="password" class="form-control" id="password1" placeholder="password">
+                    <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password">
+                    <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
                     <i class="clear-input">
                         <ion-icon name="close-circle"></ion-icon>
                     </i>
                 </div>
             </div>
 
-            <div class="form-links mt-2">
-                <div>
-                    <a href="/daftar">Daftar Sekarang</a>
-                </div>
-                <div><a href="app-forgot-password.html" class="text-muted">Lupa Password</a></div>
-            </div>
-
             <div class="form-button-group">
                 <button type="submit" class="btn btn-primary btn-block btn-lg">Masuk</button>
             </div>
-
         </form>
+
+        <div class="form-links mt-2">
+            <div>
+                <a href="/daftar">Daftar Sekarang</a>
+            </div>
+            <div><a href="app-forgot-password.html" class="text-muted">Lupa Password</a></div>
+        </div>
+
     </div>
 
 </div>
