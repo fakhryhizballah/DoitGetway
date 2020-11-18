@@ -88,8 +88,8 @@
                             <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36">
                         </div>
                         <div class="in">
-                            <strong>Sebastian Doe</strong>
-                            <div class="text-muted">4029209</div>
+                            <strong><?= $akun['Nama_Depan']; ?>&nbsp;<?= $akun['Nama_Belakang']; ?></strong>
+                            <div class="text-muted">Username : <?= $akun['Username']; ?></div>
                         </div>
                         <a href="#" class="btn btn-link btn-icon sidebar-close" data-dismiss="modal">
                             <ion-icon name="close-outline"></ion-icon>

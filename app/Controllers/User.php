@@ -2,13 +2,31 @@
 
 namespace App\Controllers;
 
+use App\Models\UserModel;
+use App\Models\OtpModel;
+
 class User extends BaseController
 {
+    public function __construct()
+    {
+        $this->OtpModel = new OtpModel();
+        $this->UserModel = new UserModel();
+        $this->email = \Config\Services::email();
+    }
+
     public function index()
     {
+        if (session()->get('ID_User') == '') {
+            session()->setFlashdata('Error', 'Login dulu');
+            return redirect()->to('/login');
+        }
+        $nama = session()->get('Username');
+        $akun = $this->UserModel->cek_login($nama);
+        // dd($akun);
         $data = [
             'title' => 'Home - DoIt by Spairum',
-            'validation' => \Config\Services::validation()
+            'validation' => \Config\Services::validation(),
+            'akun' => $akun,
         ];
         return view('User/Home', $data);
     }

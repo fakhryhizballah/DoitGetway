@@ -25,10 +25,11 @@ class Auth extends BaseController
     public function login()
     {
         // dd($this->request->getVar());
+        $email = $this->request->getVar('email');
+        // $password = password_verify($this->request->getVar('password'), PASSWORD_BCRYPT);
+        $password = ($this->request->getVar('password'));
         //validasi
         if (!$this->validate([
-
-
             'email' => [
                 'rules'  => 'required',
                 'errors' => [
@@ -46,6 +47,23 @@ class Auth extends BaseController
             $validation = \config\Services::validation();
 
             return redirect()->to('/login')->withInput()->with('validation', $validation);
+        }
+
+        $cek = $this->UserModel->cek_login($email);
+        if (empty($cek)) {
+            session()->setFlashdata('Error', 'Akun tidak terdaftar');
+            return redirect()->to('/login');
+        }
+        $password = password_verify($password, ($cek['Password']));
+
+        if (($cek['Password'] == $password)) {
+            //dd($cek);
+            session()->set('Username', $cek['Username']);
+            session()->set('ID_User', $cek['ID_User']);
+            return redirect()->to('/');
+        } else {
+            session()->setFlashdata('Error', 'Username atau Password salah');
+            return redirect()->to('/login');
         }
     }
 

@@ -24,18 +24,18 @@ class UserModel extends Model
         'Poto',
     ];
 
-    public function cek_login($nama)
+    public function cek_login($email)
     {
         return $this->db->table('tb_user')
-            ->where(array('Username' => $nama))
-            ->orWhere(array('Email' => $nama))
-            ->orWhere(array('Telp' => $nama))
+            ->where(array('Username' => $email))
+            ->orWhere(array('Email' => $email))
+            ->orWhere(array('Telp' => $email))
             ->get()->getRowArray();
     }
-    public function updateSaldo($id_user)
+    public function updateSaldo($ID_User)
     {
         return $this->db->table('tb_user')
-            ->where(array('id_user' => $id_user))
+            ->where(array('ID_User' => $ID_User))
             ->get()->getRowArray();
     }
 
