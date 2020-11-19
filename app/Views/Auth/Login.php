@@ -12,7 +12,6 @@
     </div>
 </div>
 <?= $this->endSection(); ?>
-
 <?= $this->section('Auth'); ?>
 <div id="appCapsule">
     <div class="flash-Success" data-flashdata="<?= session()->getFlashdata('Berhasil'); ?>"></div>
@@ -25,7 +24,7 @@
         <form action="Auth/login" method="POST">
             <div class="form-group basic">
                 <div class="input-wrapper">
-                    <label class="label" for="email1">E-mail / Username</label>
+                    <label class="label" for="email">E-mail / Username</label>
                     <input type="text" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" placeholder="Username/e-mail" value="<?= old('email'); ?>">
                     <div class="invalid-feedback"><?= $validation->getError('email'); ?></div>
                     <i class="clear-input">
@@ -36,7 +35,7 @@
 
             <div class="form-group basic">
                 <div class="input-wrapper">
-                    <label class="label" for="password1">Password</label>
+                    <label class="label" for="password">Password</label>
                     <input type="password" class="form-control <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" id="password" name="password" placeholder="password">
                     <div class="invalid-feedback"><?= $validation->getError('password'); ?></div>
                     <i class="clear-input">
