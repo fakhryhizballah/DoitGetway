@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\OtpModel;
 use App\Models\UserModel;
+use App\Models\IplogModel;
 
 class Auth extends BaseController
 {
@@ -11,10 +12,17 @@ class Auth extends BaseController
     {
         $this->OtpModel = new OtpModel();
         $this->UserModel = new UserModel();
+        $this->IplogModel = new IplogModel();
         $this->email = \Config\Services::email();
     }
     public function index()
     {
+        // dd($_SERVER['SERVER_NAME']);
+        // dd($_SERVER['HTTP_USER_AGENT']);
+        // dd($_SERVER['REMOTE_ADDR']);
+        // dd($_SERVER['REMOTE_ADDR']);
+        // dd($request->getIPAddress());
+
         $data = [
             'title' => 'Login - DoIt by Spairum',
             'validation' => \Config\Services::validation()
@@ -28,6 +36,7 @@ class Auth extends BaseController
         $email = $this->request->getVar('email');
         // $password = password_verify($this->request->getVar('password'), PASSWORD_BCRYPT);
         $password = ($this->request->getVar('password'));
+
         //validasi
         if (!$this->validate([
             'email' => [
@@ -48,10 +57,15 @@ class Auth extends BaseController
 
             return redirect()->to('/login')->withInput()->with('validation', $validation);
         }
-
         $cek = $this->UserModel->cek_login($email);
         if (empty($cek)) {
             session()->setFlashdata('Error', 'Akun tidak terdaftar');
+            $this->IplogModel->save([
+                'IP_ADDR' => $_SERVER['REMOTE_ADDR'],
+                'ID_HOST' =>  gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'User' => ($email),
+                'Command' => 'Tidak Ada Akun',
+            ]);
             return redirect()->to('/login');
         }
         $password = password_verify($password, ($cek['Password']));
@@ -60,9 +74,21 @@ class Auth extends BaseController
             //dd($cek);
             session()->set('Username', $cek['Username']);
             session()->set('ID_User', $cek['ID_User']);
+            $this->IplogModel->save([
+                'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
+                'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'User' => ($email),
+                'Command' => 'Berhasil Masuk',
+            ]);
             return redirect()->to('/');
         } else {
             session()->setFlashdata('Error', 'Username atau Password salah');
+            $this->IplogModel->save([
+                'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
+                'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'User' => ($email),
+                'Command' => 'Password Salah',
+            ]);
             return redirect()->to('/login');
         }
     }
@@ -161,6 +187,12 @@ class Auth extends BaseController
             'Link' => $token,
             'Status' => 'Belum Verivikasi',
         ]);
+        $this->IplogModel->save([
+            'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
+            'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'User' => ($email),
+            'Command' => 'Daftar',
+        ]);
         $this->email->setFrom('support@spairum.com', 'noreply-spairum');
         $this->email->setTo($email);
         $this->email->setSubject('OTP Verification Akun');
@@ -247,6 +279,13 @@ class Auth extends BaseController
             'id' => $cek['id'],
             'Link' => substr(sha1($cek['Link']), 0, 10),
             'Status' => 'Tercerivikasi',
+        ]);
+
+        $this->IplogModel->save([
+            'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
+            'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'User' => $cek['Email'],
+            'Command' => 'Verivikasi',
         ]);
         session()->setFlashdata('Berhasil', 'Registration success silahkan login.');
         return redirect()->to('/login');
