@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kamu Bisa melakukan transaksi dengan Cepat Mudah dan Aman">
-    <meta name="keywords" content="Spairum Doit, dompet, Do it, card, KTP, Bayar" />
+    <meta name="keywords" content="Spairum Doit,Spairum Pay,pay, dompet, Do it, card, KTP, Bayar" />
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo apples.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="48x48">
     <link rel="shortcut icon" href="assets/img/favicon.png">
