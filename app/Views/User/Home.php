@@ -1,6 +1,7 @@
 <?= $this->extend('Layout/UserLayout', $title); ?>
 
 <?= $this->section('User'); ?>
+<div class="flash-data" data-flashdata="<?= session()->getFlashdata('flash'); ?>"></div>
 <!-- Wallet Card -->
 <div class="section wallet-card-section pt-1">
     <div class="wallet-card">
@@ -8,7 +9,7 @@
         <div class="balance">
             <div class="left">
                 <span class="title">Total Saldo</span>
-                <h1 class="total">Rp. 2,562.50</h1>
+                <h1 class="total">Rp<?= $akun['Saldo'] + $akun['Saldo']; ?></h1>
             </div>
             <div class="right">
                 <a href="#" class="button" data-toggle="modal" data-target="#depositActionSheet">
@@ -36,11 +37,11 @@
                 </a>
             </div>
             <div class="item">
-                <a href="app-cards.html">
+                <a data-toggle="modal" data-target="#AddCardActionSheet">
                     <div class="icon-wrapper bg-success">
-                        <ion-icon name="card-outline"></ion-icon>
+                        <ion-icon name="journal-outline"></ion-icon>
                     </div>
-                    <strong>Cards</strong>
+                    <strong>Add Cards</strong>
                 </a>
             </div>
             <div class="item">
@@ -154,13 +155,41 @@
 </div>
 <!-- * Send Action Sheet -->
 
+<!-- AddCardActionSheet -->
+<div class="modal fade action-sheet" id="AddCardActionSheet" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tambah Kartu</h5>
+            </div>
+            <div class="modal-body">
+                <div class="action-sheet-content">
+                    <form action="user/addcard" method="POST">
+                        <?= csrf_field(); ?>
+                        <div class="form-group basic">
+                            <label class="label">ID Reader</label>
+                            <div class="input-group mb-3">
+                                <input type="text" name="reader" id="reader" class="form-control form-control-lg" placeholder="Camera Scaner QR">
+                            </div>
+                        </div>
+                        <div class="form-group basic">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Oke</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- * AddCardActionSheet -->
+
 <!-- Stats -->
 <div class="section">
     <div class="row mt-2">
         <div class="col-7">
             <div class="stat-box">
                 <div class="title">Saldo Dompet</div>
-                <div class="value text-success">Rp 5525</div>
+                <div class="value text-success">Rp<?= $akun['Saldo']; ?></div>
             </div>
         </div>
         <div class="col-5">
@@ -270,5 +299,5 @@
 </div>
 <!-- * my cards -->
 
-<!-- 
+
 <?= $this->endSection(); ?>

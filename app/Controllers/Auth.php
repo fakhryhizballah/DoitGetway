@@ -22,12 +22,15 @@ class Auth extends BaseController
         // dd($_SERVER['REMOTE_ADDR']);
         // dd($_SERVER['REMOTE_ADDR']);
         // dd($request->getIPAddress());
-
-        $data = [
-            'title' => 'Login - DoIt by Spairum',
-            'validation' => \Config\Services::validation()
-        ];
-        return view('Auth/Login', $data);
+        if (session()->get('ID_User') == '') {
+            $data = [
+                'title' => 'Login - DoIt by Spairum',
+                'validation' => \Config\Services::validation()
+            ];
+            return view('Auth/Login', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function login()
@@ -97,12 +100,16 @@ class Auth extends BaseController
 
     public function registrasi()
     {
-        $data = [
-            'title' => 'Daftar - DoIt by Spairum',
-            'validation' => \Config\Services::validation()
-        ];
+        if (session()->get('ID_User') == '') {
+            $data = [
+                'title' => 'Daftar - DoIt by Spairum',
+                'validation' => \Config\Services::validation()
+            ];
 
-        return view('Auth/Register', $data);
+            return view('Auth/Register', $data);
+        } else {
+            return redirect()->to('/');
+        }
     }
 
     public function otpregis()
@@ -288,6 +295,22 @@ class Auth extends BaseController
             'Command' => 'Verivikasi',
         ]);
         session()->setFlashdata('Berhasil', 'Registration success silahkan login.');
+        return redirect()->to('/login');
+    }
+    public function logout()
+    {
+        // $array_items = ['nama', 'id_driver', 'id_user'];
+        // $session->remove($array_items);
+        $nama = session()->get('Username');
+        $akun = $this->UserModel->cek_login($nama);
+        $this->IplogModel->save([
+            'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
+            'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'User' => $akun['Email'],
+            'Command' => 'Logout',
+        ]);
+        session()->setFlashdata('Berhasil', 'Berhasil Logout');
+        session_destroy();
         return redirect()->to('/login');
     }
 }

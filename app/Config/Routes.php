@@ -33,11 +33,14 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'User::index');
 $routes->get('/mycard', 'User::card');
+// $routes->get('/addcard', 'User::addcard');
 $routes->get('/riwayat', 'User::riwayat');
 
 $routes->get('/login', 'Auth::index');
 $routes->get('/daftar', 'Auth::registrasi');
 $routes->get('/otp/(:any)', 'Auth::otp/$1');
+
+$routes->get('ReaderAPI/mesin/(:segment)', 'ReaderAPI::mesin/$1');
 
 /**
  * --------------------------------------------------------------------

@@ -22,10 +22,12 @@ class TBReader extends Migration
 			'ID_Card'   	=> [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
+				'null'           => TRUE,
 			],
 			'Info'       	=> [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
+				'null'           => TRUE,
 			],
 			'Command'       => [
 				'type'           => 'VARCHAR',
@@ -34,6 +36,12 @@ class TBReader extends Migration
 			'Nominal'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',
+				'null'           => TRUE,
+			],
+			'ID_User'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
 			],
 			'created_at'    => [
 				'type'           => 'DATETIME',

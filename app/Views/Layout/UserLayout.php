@@ -44,6 +44,9 @@
     <div id="appCapsule">
 
         <?= $this->renderSection('User'); ?>
+        <div class="flash-Success" data-flashdata="<?= session()->getFlashdata('Berhasil'); ?>"></div>
+        <div class="flash-Error" data-flashdata="<?= session()->getFlashdata('Error'); ?>"></div>
+
 
     </div>
     <!-- * App Capsule -->
@@ -203,7 +206,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#" class="item">
+                            <a href="Auth/logout" class="item">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="log-out-outline"></ion-icon>
                                 </div>
@@ -234,7 +237,9 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/base.js"></script>
-    <!-- custom javascript -->
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="assets/js/script.js"></script>
 
 

@@ -22,6 +22,7 @@
     </div>
     <div class="section mt-2 mb-5 p-3">
         <form action="Auth/login" method="POST">
+            <!-- <?= csrf_field(); ?> -->
             <div class="form-group basic">
                 <div class="input-wrapper">
                     <label class="label" for="email">E-mail / Username</label>
