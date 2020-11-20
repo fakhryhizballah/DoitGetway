@@ -57,6 +57,7 @@ class CardAPI extends ResourceController
                 ]);
                 $msg = [
                     'massage' => 'Kartu Baru berhasil di Simpan',
+                    'info' => 'Berhasil'
                 ];
                 $response = [
                     'status' => 200,
@@ -65,22 +66,34 @@ class CardAPI extends ResourceController
                 ];
                 return $this->respond($response, 200);
             };
-            $this->model->save([
-                'id' => $myCard['id'],
-                'ID_User' => $ID_User,
-                'Status' => 'Terdaftar',
-            ]);
-            $msg = [
-                'massage' => 'Kartu berhasil didaftarkan',
-            ];
-            $response = [
-                'status' => 200,
-                'error' => false,
-                'data' => $msg,
-            ];
-            return $this->respond($response, 200);
-            // $myCard = $this->CardModel->search($id);
-
+            if ($myCard['Status'] == 'Terdaftar') {
+                $msg = [
+                    'massage' => 'Kartu Sudah Ada yang Punya',
+                    'info' => 'Tidak Bisa'
+                ];
+                $response = [
+                    'status' => 200,
+                    'error' => false,
+                    'data' => $msg,
+                ];
+                return $this->respond($response, 200);
+            } else {
+                $this->model->save([
+                    'id' => $myCard['id'],
+                    'ID_User' => $ID_User,
+                    'Status' => 'Terdaftar',
+                ]);
+                $msg = [
+                    'massage' => 'Kartu berhasil didaftarkan',
+                    'info' => 'Berhasil'
+                ];
+                $response = [
+                    'status' => 200,
+                    'error' => false,
+                    'data' => $msg,
+                ];
+                return $this->respond($response, 200);
+            }
         }
     }
 }
