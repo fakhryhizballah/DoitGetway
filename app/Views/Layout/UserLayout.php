@@ -101,9 +101,9 @@
                     <!-- * profile box -->
                     <!-- Saldo -->
                     <div class="sidebar-balance">
-                        <div class="listview-title">Total Saldo</div>
+                        <div class="listview-title">Saldo Dompet</div>
                         <div class="in">
-                            <h1 class="amount">Rp<?= $akun['Saldo'] + $akun['Saldo']; ?></h1>
+                            <h1 class="amount">Rp<?= number_format($akun['Saldo'], 2, ",", "."); ?></h1>
                         </div>
                     </div>
                     <!-- * saldo -->

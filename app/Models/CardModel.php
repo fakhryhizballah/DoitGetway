@@ -35,4 +35,8 @@ class CardModel extends Model
             ->where(array('ID_Card' => $ID_Card))
             ->get()->getRowArray();
     }
+    public function total($ID_User)
+    {
+        return $this->db->table('tb_card')->like('ID_User', $ID_User)->get()->getResultArray();
+    }
 }

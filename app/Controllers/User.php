@@ -29,13 +29,24 @@ class User extends BaseController
         $keyword =  $akun['ID_User'];
         $myCard = $this->CardModel->search($keyword);
         $myCard = $this->CardModel->orderBy('created_at', 'DESC')->findAll();
-        // dd($myCard);
+        $saldo = $this->CardModel->Total($keyword);
+        $total = 0;
+        $card = 0;
+        foreach ($saldo as $row) {
+            $total += $row['Saldo'];
+            $card++;
+        }
+        // dd($total);
+
+        // dd($myCard['0']['Saldo']);
 
         $data = [
             'title' => 'Home - DoIt by Spairum',
             'validation' => \Config\Services::validation(),
             'akun' => $akun,
             'myCard' => $myCard,
+            'SaldoCard' => $total,
+            'SumCard' => $card,
         ];
         return view('User/home', $data);
     }
