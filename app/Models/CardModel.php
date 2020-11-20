@@ -16,13 +16,15 @@ class CardModel extends Model
         'ID_User',
         'Saldo',
         'Jenis',
+        'Ket',
+        'Warna',
         'Status'
     ];
 
     public function search($keyword)
     {
-        // $builder = $this->tabel('history');
-        // $builder->like('id_master', $keyword);
+        // $builder = $this->tabel('tb_card');
+        // $builder->like('ID_User', $keyword);
         // return $builder;
         return $this->table('tb_card')->like('ID_User', $keyword);
     }

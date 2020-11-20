@@ -33,6 +33,16 @@ class TBCard extends Migration
 				'constraint'     => '225',
 				'null'           => TRUE,
 			],
+			'Ket'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
+			],
+			'Warna'       => [
+				'type'           => 'VARCHAR',
+				'constraint'     => '225',
+				'null'           => TRUE,
+			],
 			'Status'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '225',

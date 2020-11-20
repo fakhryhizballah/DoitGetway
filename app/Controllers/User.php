@@ -26,11 +26,16 @@ class User extends BaseController
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
-        // dd($akun);
+        $keyword =  $akun['ID_User'];
+        $myCard = $this->CardModel->search($keyword);
+        $myCard = $this->CardModel->orderBy('created_at', 'DESC')->findAll();
+        // dd($myCard);
+
         $data = [
             'title' => 'Home - DoIt by Spairum',
             'validation' => \Config\Services::validation(),
             'akun' => $akun,
+            'myCard' => $myCard,
         ];
         return view('User/home', $data);
     }
@@ -45,6 +50,7 @@ class User extends BaseController
         $keyword =  $akun['ID_User'];
 
         $myCard = $this->CardModel->search($keyword);
+        $myCard = $this->CardModel->orderBy('created_at', 'DESC')->findAll();
 
         $data = [
             'title' => 'My Card - DoIt by Spairum',
@@ -53,6 +59,46 @@ class User extends BaseController
             'myCard' => $myCard
         ];
         return view('User/card', $data);
+    }
+    public function removeCard($id)
+    {
+        if (session()->get('ID_User') == '') {
+            session()->setFlashdata('Error', 'Login dulu');
+            return redirect()->to('/login');
+        }
+        $myCard = $this->CardModel->Cari($id);
+        if (empty($myCard)) {
+            return redirect()->to('/');
+        };
+        $this->CardModel->save([
+            'id' => $myCard['id'],
+            'Status' => 'Tidak Terdaftar',
+            'ID_User' => null
+        ]);
+        session()->setFlashdata('flash', 'Card telah di hapus');
+        return redirect()->to('/mycard');
+    }
+    public function editCard($id)
+    {
+        if (session()->get('ID_User') == '') {
+            session()->setFlashdata('Error', 'Login dulu');
+            return redirect()->to('/login');
+        }
+        $myCard = $this->CardModel->Cari($id);
+        if (empty($myCard)) {
+            return redirect()->to('/');
+        };
+        $jenis = $this->request->getVar('jenis');
+        $ket = $this->request->getVar('Ket');
+        $Warna = $this->request->getVar('warna');
+        $this->CardModel->save([
+            'id' => $myCard['id'],
+            'Jenis' => $jenis,
+            'Ket' => $ket,
+            'Warna' => $Warna,
+        ]);
+        session()->setFlashdata('flash', 'Card telah di Edit');
+        return redirect()->to('/mycard');
     }
 
     public function addcard()
