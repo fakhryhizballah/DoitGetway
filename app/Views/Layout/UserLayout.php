@@ -118,7 +118,7 @@
                                 Isi Saldo
                             </div>
                         </a>
-                        <a href="app-index.html" class="action-button">
+                        <a href="#" class="action-button" data-toggle="modal" data-target="#depositActionSheet">
                             <div class="in">
                                 <div class="iconbox">
                                     <ion-icon name="arrow-down-outline"></ion-icon>
@@ -126,7 +126,7 @@
                                 Terima
                             </div>
                         </a>
-                        <a href="app-index.html" class="action-button">
+                        <a href="#" class="action-button" data-toggle="modal" data-target="#sendActionSheet">
                             <div class="in">
                                 <div class="iconbox">
                                     <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -134,7 +134,7 @@
                                 Bayar
                             </div>
                         </a>
-                        <a href="app-cards.html" class="action-button">
+                        <a href="/mycard" class="action-button">
                             <div class="in">
                                 <div class="iconbox">
                                     <ion-icon name="card-outline"></ion-icon>
@@ -223,6 +223,188 @@
         </div>
     </div>
     <!-- * App Sidebar -->
+
+    <!-- Deposit Action Sheet -->
+    <div class="modal fade action-sheet" id="depositActionSheet" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Balance</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content">
+                        <form>
+                            <div class="form-group basic">
+                                <div class="input-wrapper">
+                                    <label class="label" for="account1">From</label>
+                                    <select class="form-control custom-select" id="account1">
+                                        <option value="0">Savings (*** 5019)</option>
+                                        <option value="1">Investment (*** 6212)</option>
+                                        <option value="2">Mortgage (*** 5021)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group basic">
+                                <label class="label">Enter Amount</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="input1">$</span>
+                                    </div>
+                                    <input type="text" class="form-control form-control-lg" value="100">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group basic">
+                                <button type="button" class="btn btn-primary btn-block btn-lg" data-dismiss="modal">Deposit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Deposit Action Sheet -->
+
+    <!-- Send Action Sheet -->
+    <div class="modal fade action-sheet" id="sendActionSheet" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Bayar atau Kirim Uang</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content">
+                        <form action="/user/bayar" method="POST">
+                            <?= csrf_field(); ?>
+                            <div class="form-group basic">
+                                <div class="input-wrapper">
+                                    <label class="label" for="account2">Dari</label>
+                                    <select class="form-control custom-select" id="account1" name="dari">
+                                        <option value="<?= $akun['ID_User']; ?>">Dompet</option>
+                                        <?php foreach ($myCard as $r) : ?>
+                                            <option value="<?= $r['ID_Card']; ?>"><?= $r['Jenis']; ?> (<?= $r['Ket']; ?>)</option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group basic">
+                                <div class="input-wrapper">
+                                    <label class="label" for="text11">Tujuan</label>
+                                    <input type="number" id="tujuan" name="tujuan" minlength="10" maxlength="14" class="form-control" id="text11" placeholder="Masukan no telpon penerima">
+                                    <i class="clear-input">
+                                        <ion-icon name="close-circle"></ion-icon>
+                                    </i>
+                                </div>
+                            </div>
+
+                            <div class="form-group basic">
+                                <label class="label">Enter Amount</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="input14">Rp</span>
+                                    </div>
+                                    <input type="number" class="form-control form-control-lg" name="nominal" id="nominal" placeholder="0">
+                                </div>
+                            </div>
+
+
+                            <div class="form-group basic">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Kirim</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Send Action Sheet -->
+
+    <!-- Exchange Action Sheet -->
+    <div class="modal fade action-sheet" id="ExchangeActionSheet" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tukar Uang</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content">
+                        <form action="/user/exchange" method="POST">
+                            <?= csrf_field(); ?>
+                            <div class="form-group basic">
+                                <div class="input-wrapper">
+                                    <label class="label" for="account1">Dari</label>
+                                    <select class="form-control custom-select" id="account1" name="dari">
+                                        <option value="<?= $akun['ID_User']; ?>">Dompet</option>
+                                        <?php foreach ($myCard as $r) : ?>
+                                            <option value="<?= $r['ID_Card']; ?>"><?= $r['Jenis']; ?> (<?= $r['Ket']; ?>)</option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group basic">
+                                <div class="input-wrapper">
+                                    <label class="label" for="account2">Tujuan</label>
+                                    <select class="form-control custom-select" id="account2" name="tujuan">
+                                        <option value="<?= $akun['ID_User']; ?>">Dompet</option>
+                                        <?php foreach ($myCard as $r) : ?>
+                                            <option value="<?= $r['ID_Card']; ?>"><?= $r['Jenis']; ?> (<?= $r['Ket']; ?>)</option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group basic">
+                                <label class="label">Enter Amount</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text" id="input14">Rp</span>
+                                    </div>
+                                    <input type="number" name="jumlah" class="form-control form-control-lg" placeholder="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group basic">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Tukar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * Exchange Action Sheet -->
+
+    <!-- AddCardActionSheet -->
+    <div class="modal fade action-sheet" id="AddCardActionSheet" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Kartu</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="action-sheet-content">
+                        <form action="user/addcard" method="POST">
+                            <?= csrf_field(); ?>
+                            <div class="form-group basic">
+                                <label class="label">ID Reader</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" name="reader" id="reader" class="form-control form-control-lg" placeholder="Camera Scaner QR">
+                                </div>
+                            </div>
+                            <div class="form-group basic">
+                                <button type="submit" class="btn btn-primary btn-block btn-lg">Oke</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- * AddCardActionSheet -->
 
     <!-- ///////////// Js Files ////////////////////  -->
     <!-- Jquery -->

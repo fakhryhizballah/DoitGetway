@@ -121,6 +121,73 @@ class User extends BaseController
         }
     }
 
+    public function bayar()
+    {
+        if (session()->get('ID_User') == '') {
+            session()->setFlashdata('Error', 'Login dulu');
+            return redirect()->to('/login');
+        }
+        $nama = session()->get('Username');
+        $akun = $this->UserModel->cek_login($nama);
+
+        $dari = $this->request->getVar('dari');
+        $tujuan = $this->request->getVar('tujuan');
+        $nominal = $this->request->getVar('nominal');
+
+        $dariCard = $this->CardModel->Cari($dari);
+
+        if (empty($dariCard)) {
+            if ($akun['Saldo'] >= $nominal) {
+                $sisa = $akun['Saldo'] - $nominal;
+                $penerima = $this->UserModel->cek_login($tujuan);
+                if (empty($penerima)) {
+                    session()->setFlashdata('Error2', 'Nomor tujuan tidak ada');
+                    return redirect()->to('/');
+                } else {
+                    $this->UserModel->save([
+                        'id' => $akun['id'],
+                        'Saldo' => $sisa,
+                    ]);
+
+                    $saldoAdd = $penerima['Saldo'] + $nominal;
+                    $this->UserModel->save([
+                        'id' => $penerima['id'],
+                        'Saldo' => $saldoAdd,
+                    ]);
+                    session()->setFlashdata('flash', 'Saldo berhasil di kirim');
+                    return redirect()->to('/');
+                }
+            } else {
+                session()->setFlashdata('Error2', 'Saldo kurang');
+                return redirect()->to('/');
+            }
+        } else {
+            if ($dariCard['Saldo'] >= $nominal) {
+                $sisa = $dariCard['Saldo'] - $nominal;
+                $penerima = $this->UserModel->cek_login($tujuan);
+                if (empty($penerima)) {
+                    session()->setFlashdata('Error2', 'Nomor tujuan tidak ada');
+                    return redirect()->to('/');
+                } else {
+                    $this->CardModel->save([
+                        'id' => $dariCard['id'],
+                        'Saldo' => $sisa
+                    ]);
+                    $saldoAdd = $penerima['Saldo'] + $nominal;
+                    $this->UserModel->save([
+                        'id' => $penerima['id'],
+                        'Saldo' => $saldoAdd,
+                    ]);
+                    session()->setFlashdata('flash', 'Saldo berhasil di kirim');
+                    return redirect()->to('/');
+                }
+            } else {
+                session()->setFlashdata('Error2', 'Saldo kurang');
+                return redirect()->to('/');
+            }
+        }
+    }
+
     public function card()
     {
         if (session()->get('ID_User') == '') {
