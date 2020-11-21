@@ -50,6 +50,77 @@ class User extends BaseController
         ];
         return view('User/home', $data);
     }
+
+    public function exchange()
+    {
+        if (session()->get('ID_User') == '') {
+            session()->setFlashdata('Error', 'Login dulu');
+            return redirect()->to('/login');
+        }
+        $nama = session()->get('Username');
+        $akun = $this->UserModel->cek_login($nama);
+        $dari = $this->request->getVar('dari');
+        $tujuan = $this->request->getVar('tujuan');
+        $jumlah = $this->request->getVar('jumlah');
+
+        if ($dari == $tujuan) {
+            session()->setFlashdata('Error', 'Dari dan Tujuan tidak boleh sama');
+            return redirect()->to('/');
+        }
+        $dariCard = $this->CardModel->Cari($dari);
+        $tujuanCard = $this->CardModel->Cari($tujuan);
+
+        if (empty($dariCard)) {
+            $saldo = $akun['Saldo'];
+            if ($saldo >= $jumlah) {
+                $sisa = $saldo - $jumlah;
+                $this->UserModel->save([
+                    'id' => $akun['id'],
+                    'Saldo' => $sisa,
+                ]);
+
+                $terima = $tujuanCard['Saldo'] + $jumlah;
+                $this->CardModel->save([
+                    'id' => $tujuanCard['id'],
+                    'Saldo' => $terima,
+                ]);
+                session()->setFlashdata('flash', 'Saldo telah dipindah');
+                return redirect()->to('/');
+            } else {
+                session()->setFlashdata('Error2', 'Saldo kurang');
+                return redirect()->to('/');
+            }
+        };
+
+        if ($dariCard['Saldo'] >= $jumlah) {
+            $sisa = $dariCard['Saldo'] - $jumlah;
+            $this->CardModel->save([
+                'id' => $dariCard['id'],
+                'Saldo' => $sisa,
+            ]);
+            if (empty($tujuanCard)) {
+                $terima = $akun['Saldo'] + $jumlah;
+                $this->UserModel->save([
+                    'id' => $akun['id'],
+                    'Saldo' => $terima
+                ]);
+                session()->setFlashdata('flash', 'Saldo telah dipindah');
+                return redirect()->to('/');
+            } else {
+                $terima = $tujuanCard['Saldo'] + $jumlah;
+                $this->CardModel->save([
+                    'id' => $tujuanCard['id'],
+                    'Saldo' => $terima
+                ]);
+                session()->setFlashdata('flash', 'Saldo telah dipindah');
+                return redirect()->to('/');
+            }
+        } else {
+            session()->setFlashdata('Error2', 'Saldo kurang');
+            return redirect()->to('/');
+        }
+    }
+
     public function card()
     {
         if (session()->get('ID_User') == '') {

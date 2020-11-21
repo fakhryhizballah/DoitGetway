@@ -2,6 +2,7 @@
 
 <?= $this->section('User'); ?>
 <div class="flash-data" data-flashdata="<?= session()->getFlashdata('flash'); ?>"></div>
+<div class="flash-Error2" data-flashdata="<?= session()->getFlashdata('Error2'); ?>"></div>
 <!-- Wallet Card -->
 <div class="section wallet-card-section pt-1">
     <div class="wallet-card">
@@ -9,7 +10,7 @@
         <div class="balance">
             <div class="left">
                 <span class="title">Total Saldo</span>
-                <h1 class="total">Rp<?= $akun['Saldo'] + $akun['Saldo']; ?></h1>
+                <h1 class="total">Rp <?= number_format($akun['Saldo'] + $SaldoCard, 0, ",", "."); ?></h1>
             </div>
             <div class="right">
                 <a href="#" class="button" data-toggle="modal" data-target="#depositActionSheet">
@@ -45,7 +46,7 @@
                 </a>
             </div>
             <div class="item">
-                <a href="#" data-toggle="modal" data-target="#sendActionSheet">
+                <a data-toggle="modal" data-target="#ExchangeActionSheet">
                     <div class="icon-wrapper bg-warning">
                         <ion-icon name="swap-vertical"></ion-icon>
                     </div>
@@ -155,6 +156,62 @@
 </div>
 <!-- * Send Action Sheet -->
 
+<!-- Exchange Action Sheet -->
+<div class="modal fade action-sheet" id="ExchangeActionSheet" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Tukar Uang</h5>
+            </div>
+            <div class="modal-body">
+                <div class="action-sheet-content">
+                    <form action="/user/exchange" method="POST">
+                        <?= csrf_field(); ?>
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="account1">Dari</label>
+                                <select class="form-control custom-select" id="account1" name="dari">
+                                    <option value="<?= $akun['ID_User']; ?>">Dompet</option>
+                                    <?php foreach ($myCard as $r) : ?>
+                                        <option value="<?= $r['ID_Card']; ?>"><?= $r['Jenis']; ?> (<?= $r['Ket']; ?>)</option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <div class="input-wrapper">
+                                <label class="label" for="account2">Tujuan</label>
+                                <select class="form-control custom-select" id="account2" name="tujuan">
+                                    <option value="<?= $akun['ID_User']; ?>">Dompet</option>
+                                    <?php foreach ($myCard as $r) : ?>
+                                        <option value="<?= $r['ID_Card']; ?>"><?= $r['Jenis']; ?> (<?= $r['Ket']; ?>)</option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <label class="label">Enter Amount</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="input14">Rp</span>
+                                </div>
+                                <input type="number" name="jumlah" class="form-control form-control-lg" placeholder="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group basic">
+                            <button type="submit" class="btn btn-primary btn-block btn-lg">Tukar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- * Exchange Action Sheet -->
+
 <!-- AddCardActionSheet -->
 <div class="modal fade action-sheet" id="AddCardActionSheet" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -189,13 +246,13 @@
         <div class="col-7">
             <div class="stat-box">
                 <div class="title">Saldo Dompet</div>
-                <div class="value text-success">Rp<?= $akun['Saldo']; ?></div>
+                <div class="value text-success">Rp <?= number_format($akun['Saldo'], 0, ",", "."); ?></div>
             </div>
         </div>
         <div class="col-5">
             <div class="stat-box">
                 <div class="title">Total Card</div>
-                <div class="value text-danger"> 5</div>
+                <div class="value text-danger"> <?= $SumCard; ?></div>
             </div>
         </div>
     </div>
@@ -203,7 +260,7 @@
         <div class="col-12">
             <div class="stat-box">
                 <div class="title">Total Saldo Card</div>
-                <div class="value">Rp 53.25</div>
+                <div class="value">Rp <?= number_format($SaldoCard, 0, ",", "."); ?></div>
             </div>
         </div>
         <!-- <div class="col-6">
