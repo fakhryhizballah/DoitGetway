@@ -34,7 +34,7 @@
         </div>
         <div class="right">
             <a href="#" class="headerButton">
-                <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged w32">
+                <img src="assets/img/user/<?= $akun['Poto']; ?>" alt="image" class="imaged w32">
                 <!-- <span class="badge badge-danger">6</span> -->
             </a>
         </div>
@@ -88,7 +88,7 @@
                     <!-- profile box -->
                     <div class="profileBox pt-2 pb-2">
                         <div class="image-wrapper">
-                            <img src="assets/img/sample/avatar/avatar1.jpg" alt="image" class="imaged  w36">
+                            <img src="assets/img/user/<?= $akun['Poto']; ?>" alt="image" class="imaged  w36">
                         </div>
                         <div class="in">
                             <strong><?= $akun['Nama_Depan']; ?>&nbsp;<?= $akun['Nama_Belakang']; ?></strong>
