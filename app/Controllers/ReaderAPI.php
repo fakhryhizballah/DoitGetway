@@ -5,6 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\I18n\Time;
 use CodeIgniter\RESTful\ResourceController;
 
+
 class ReaderAPI extends ResourceController
 {
     protected $format = 'json';
@@ -19,7 +20,45 @@ class ReaderAPI extends ResourceController
     public function status($id = NULL)
     {
         $get = $this->model->getReader($id);
-        return $this->respond($get, 200);
+        $time = Time::now('Asia/Jakarta');
+        $dataLog = [
+            'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'LinkAPI' => "/ReaderAPI/status/$id",
+            'NameAPI' => 'Status Reader',
+            'Respoun' => '200',
+            'updated_at' => $time,
+            'created_at' => $time
+        ];
+        $edit = $this->model->hit($dataLog);
+        if ($get) {
+            $msg = [
+                'Command' => $get['Command'],
+                'Info' => $get['Info'],
+                'Bat' => $get['Bat'],
+            ];
+            $response = [
+                'status' => 200,
+                'error' => false,
+                'data' => $msg,
+            ];
+            return $this->respond($response, 200);
+        } else {
+            $dataLog = [
+                'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'LinkAPI' => "/ReaderAPI/status/$id",
+                'NameAPI' => 'Status Reader',
+                'Respoun' => '500',
+                'updated_at' => $time,
+                'created_at' => $time
+            ];
+            $edit = $this->model->hit($dataLog);
+            $response = [
+                'status' => 500,
+                'error' => false,
+                'data' => 'Anda salah sasaran',
+            ];
+            return $this->respond($response, 200);
+        }
     }
 
     public function addCard($id = null)
@@ -39,6 +78,16 @@ class ReaderAPI extends ResourceController
                 'error' => true,
                 'data' => \config\Services::validation()->getErrors(),
             ];
+            $time = Time::now('Asia/Jakarta');
+            $dataLog = [
+                'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'LinkAPI' => "/ReaderAPI/status/$id",
+                'NameAPI' => 'Status Reader',
+                'Respoun' => '500',
+                'updated_at' => $time,
+                'created_at' => $time
+            ];
+            $log = $this->model->hit($dataLog);
             return $this->respond($response, 500);
         } else {
             $ID_Card = $this->request->getVar('ID_Card');
@@ -50,6 +99,17 @@ class ReaderAPI extends ResourceController
                 'updated_at' => $updated_at,
             ];
             $edit = $this->model->updateReader($data, $id);
+
+            $time = Time::now('Asia/Jakarta');
+            $dataLog = [
+                'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'LinkAPI' => "/ReaderAPI/status/$id",
+                'NameAPI' => 'Status Reader',
+                'Respoun' => '200',
+                'updated_at' => $time,
+                'created_at' => $time
+            ];
+            $log = $this->model->hit($dataLog);
             $myCard = $this->model->cari($id);
             if ($edit) {
                 $msg = [

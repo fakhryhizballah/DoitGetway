@@ -39,4 +39,9 @@ class ReaderModel extends Model
             ->where(array('ID_Reader' => $reader))
             ->get()->getRowArray();
     }
+
+    public function hit($dataLog)
+    {
+        return $this->db->table('api_hit')->insert($dataLog);
+    }
 }
