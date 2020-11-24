@@ -21,17 +21,25 @@ class ReaderAPI extends ResourceController
     {
         $get = $this->model->getReader($id);
         $time = Time::now('Asia/Jakarta');
+        $keyword = "Status Reader $id";
+        // $status  = $this->model->sea($keyword);
+        // $sebelum = $status->Respoun;
+        // $status  = $this->model->orderBy('created_at', 'DESC')->findAll(1);
+        // $sekarang = $time->getTimestamp();
+        // $selisih = $sekarang - $sebelum;
+        // dd($selisih);
         $dataLog = [
             'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
             'LinkAPI' => "/ReaderAPI/status/$id",
-            'NameAPI' => 'Status Reader',
-            'Respoun' => '200',
+            'NameAPI' => "Status Reader $id",
+            'Respoun' => "200",
             'updated_at' => $time,
             'created_at' => $time
         ];
         $edit = $this->model->hit($dataLog);
         if ($get) {
             $msg = [
+                'NameAPI' => $get['ID_Reader'],
                 'Command' => $get['Command'],
                 'Info' => $get['Info'],
                 'Bat' => $get['Bat'],
@@ -46,7 +54,7 @@ class ReaderAPI extends ResourceController
             $dataLog = [
                 'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
                 'LinkAPI' => "/ReaderAPI/status/$id",
-                'NameAPI' => 'Status Reader',
+                'NameAPI' => "Status Reader $id",
                 'Respoun' => '500',
                 'updated_at' => $time,
                 'created_at' => $time
@@ -81,8 +89,8 @@ class ReaderAPI extends ResourceController
             $time = Time::now('Asia/Jakarta');
             $dataLog = [
                 'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
-                'LinkAPI' => "/ReaderAPI/status/$id",
-                'NameAPI' => 'Status Reader',
+                'LinkAPI' => "/ReaderAPI/addCard/$id",
+                'NameAPI' => "Add Card $id",
                 'Respoun' => '500',
                 'updated_at' => $time,
                 'created_at' => $time
@@ -103,8 +111,8 @@ class ReaderAPI extends ResourceController
             $time = Time::now('Asia/Jakarta');
             $dataLog = [
                 'IP' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
-                'LinkAPI' => "/ReaderAPI/status/$id",
-                'NameAPI' => 'Status Reader',
+                'LinkAPI' => "/ReaderAPI/addCard/$id",
+                'NameAPI' => "Add Card $id",
                 'Respoun' => '200',
                 'updated_at' => $time,
                 'created_at' => $time

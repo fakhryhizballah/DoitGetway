@@ -16,4 +16,11 @@ class HitApiModel extends Model
         'NameAPI',
         'Respoun'
     ];
+    public function search($keyword)
+    {
+        // $builder = $this->tabel('tb_card');
+        // $builder->like('ID_User', $keyword);
+        // return $builder;
+        return $this->table('api_hit')->like('LinkAPI', $keyword)->orderBy('created_at', 'DESC')->findAll(1);
+    }
 }

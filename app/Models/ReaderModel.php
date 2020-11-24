@@ -44,4 +44,10 @@ class ReaderModel extends Model
     {
         return $this->db->table('api_hit')->insert($dataLog);
     }
+
+    public function sea($keyword)
+    {
+        // return $this->db->table('api_hit')->getWhere(['NameAPI' => $keyword])->getLastRow();
+        return $this->db->table('api_hit')->where(array('NameAPI' => $keyword))->get()->getLastRow();
+    }
 }
