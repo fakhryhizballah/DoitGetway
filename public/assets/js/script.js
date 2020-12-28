@@ -10,7 +10,6 @@ for (let i = 0; i < menuLength; i++) {
     if (menuItem [i].href === currentLocation) {
         menuItem[i].className = "item active"
     }
-    
 }
 
 const flashError = $(".flash-Error").data("flashdata");
