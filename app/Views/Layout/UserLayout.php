@@ -388,8 +388,20 @@
                 </div>
                 <div class="modal-body">
                     <div class="action-sheet-content">
-                        <form action="user/addcard" method="POST">
+                        <div class="camera">
+                            <video id="preview" class="kamera"></video>
+                        </div>
+                        <div class="camera">
+                            <video id="preview" class="kamera"></video>
+                        </div>
+
+                        <form action="user/addcard" method="POST" id="myForm" class="user">
                             <?= csrf_field(); ?>
+                            <div class="container">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control form-control-user" id="code" name="qrcode">
+                                </div>
+                            </div>
                             <div class="form-group basic">
                                 <label class="label">ID Reader</label>
                                 <div class="input-group mb-3">
@@ -420,6 +432,11 @@
     <script src="assets/js/plugins/owl-carousel/owl.carousel.min.js"></script>
     <!-- Base Js File -->
     <script src="assets/js/base.js"></script>
+
+    <!-- scanner -->
+    <script src="scanner/js/app.js"></script>
+    <script src="scanner/vendor/instascan/instascan.min.js"></script>
+    <script src="scanner/js/scanner.js"></script>
 
     <script>
         // var settings = {
