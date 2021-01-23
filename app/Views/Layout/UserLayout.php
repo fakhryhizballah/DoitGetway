@@ -12,6 +12,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/logo apples.png">
     <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="48x48">
     <link rel="shortcut icon" href="assets/img/favicon.png">
+    <script src="assets/js/lib/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
@@ -409,7 +410,7 @@
     <!-- ///////////// Js Files ////////////////////  -->
     <!-- Jquery -->
     <!-- <script src="assets/js/lib/jquery-3.4.1.min.js"></script> -->
-    <script src="assets/js/lib/jquery-3.5.1.min.js"></script>
+
     <!-- Bootstrap-->
     <script src="assets/js/lib/popper.min.js"></script>
     <script src="assets/js/lib/bootstrap.min.js"></script>
@@ -420,9 +421,32 @@
     <!-- Base Js File -->
     <script src="assets/js/base.js"></script>
 
+    <script>
+        // var settings = {
+        //     "url": "http://192.168.1P.52/HomeAI",
+        //     "method": "GET",
+        //     "timeout": 0,
+        //     
+        // };
+
+        // $.ajax({
+        //     url: 'http://192.168.1P.52/HomeAI',
+        //     method: 'GET',
+        //     crossDomain: true,
+        //     type: 'json',
+        //     data: message,
+        //     success: function(response) {
+        //         console.log(response);
+        //     },
+        //     error: function(error) {
+        //         console.log(error);
+        //     }
+        // });
+    </script>
     <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script src="assets/js/script.js"></script>
+
 
 
 </body>
