@@ -35,6 +35,7 @@ $routes->get('/', 'User::index');
 $routes->get('/mycard', 'User::card');
 // $routes->get('/addcard', 'User::addcard');
 $routes->get('/riwayat', 'User::riwayat');
+$routes->get('/QR', 'User::scanLayout');
 
 $routes->get('/login', 'Auth::index');
 $routes->get('/daftar', 'Auth::registrasi');

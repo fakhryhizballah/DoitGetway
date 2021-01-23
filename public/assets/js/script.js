@@ -12,6 +12,12 @@ for (let i = 0; i < menuLength; i++) {
     }
 }
 
+function myFunction() {
+    var  src="scanner/vendor/modernizr/modernizr.js";
+    var  src="scanner/vendor/vue/vue.min.js";
+    console.log("oke");
+ }
+
 const flashError = $(".flash-Error").data("flashdata");
 console.log(flashError);
 if (flashError) {

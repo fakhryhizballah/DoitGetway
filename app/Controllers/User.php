@@ -50,6 +50,13 @@ class User extends BaseController
         ];
         return view('User/home', $data);
     }
+    public function scanLayout()
+    {
+        $data = [
+            'title' => 'Home - DoIt by Spairum',
+        ];
+        return view('Layout/scanLayout', $data);
+    }
 
     public function exchange()
     {
