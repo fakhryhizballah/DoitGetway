@@ -13,6 +13,9 @@
     <link rel="icon" type="image/png" href="assets/img/favicon.png" sizes="48x48">
     <link rel="shortcut icon" href="assets/img/favicon.png">
     <script src="assets/js/lib/jquery-3.5.1.min.js"></script>
+    <!-- scanner -->
+    <script src="scanner/vendor/modernizr/modernizr.js"></script>
+    <script src="scanner/vendor/vue/vue.min.js"></script>
 </head>
 
 <body>
@@ -391,10 +394,6 @@
                         <div class="camera">
                             <video id="preview" class="kamera"></video>
                         </div>
-                        <div class="camera">
-                            <video id="preview" class="kamera"></video>
-                        </div>
-
                         <form action="user/addcard" method="POST" id="myForm" class="user">
                             <?= csrf_field(); ?>
                             <div class="container">
