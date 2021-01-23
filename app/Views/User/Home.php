@@ -1,6 +1,26 @@
 <?= $this->extend('Layout/UserLayout', $title); ?>
 
 <?= $this->section('User'); ?>
+<?php
+
+// $curl = curl_init();
+
+// curl_setopt_array($curl, array(
+//     CURLOPT_URL => 'http://192.168.1.52/HomeAPI',
+//     CURLOPT_RETURNTRANSFER => true,
+//     CURLOPT_CUSTOMREQUEST => 'GET',
+// ));
+
+// $response = curl_exec($curl);
+
+// curl_close($curl);
+// $response = json_decode($response, true);
+// $namaUsr = $response['message']['Username'];
+// $Snama = session()->get('Username');
+
+// echo $namaUsr;
+
+?>
 <div class="flash-data" data-flashdata="<?= session()->getFlashdata('flash'); ?>"></div>
 <div class="flash-Error2" data-flashdata="<?= session()->getFlashdata('Error2'); ?>"></div>
 <!-- Wallet Card -->
@@ -199,6 +219,37 @@
     </div>
 <?php endforeach; ?>
 <!-- * EditCardActionSheet -->
+<script>
+    // $(document).ready(function() {
+    //     console.log("ok");
+    //     // $.ajax({
+    //     //     type: 'GET',
+    //     //     url: "http://192.168.1.52/HomeAPI",
+    //     //     crossDomain: true,
+    //     //     'dataType': "jsonp",
+    //     // });
+    //     var settings = {
+    //         'cache': false,
+    //         'dataType': "jsonp",
+    //         "async": true,
+    //         "crossDomain": true,
+    //         "url": "http://192.168.1.52/HomeAPI",
+    //         "method": "GET",
+    //         "headers": {
+    //             "accept": "application/json",
+    //             "Access-Control-Allow-Origin": "*"
+    //         }
+    //     }
+
+    //     $.ajax(settings).done(function(response) {
+    //         console.log(response);
+
+    //     });
+    // });
+</script>
+<div id="tampil">
+    <!-- Data tampil disini -->
+</div>
 
 
 <?= $this->endSection(); ?>
