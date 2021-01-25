@@ -59,12 +59,14 @@
             </div>
             <div class="item">
                 <!-- <a data-toggle="modal" data-target="#AddCardActionSheet"> -->
-                <a href="/QR">
+                <!-- <a href="/QR"> -->
+                <a class="">
                     <div class="icon-wrapper bg-success">
                         <ion-icon name="journal-outline"></ion-icon>
                     </div>
                     <strong>Add Cards</strong>
                 </a>
+                <button type="button" class="btn btn-primary tomboladdcard"></button>
             </div>
             <div class="item">
                 <a data-toggle="modal" data-target="#ExchangeActionSheet">
@@ -329,7 +331,7 @@
             </div>
             <div class="modal-body">
                 <div class="action-sheet-content">
-                    <form action="/user/exchange" method="POST">
+                    <form id="exchange" method="POST">
                         <?= csrf_field(); ?>
                         <div class="form-group basic">
                             <div class="input-wrapper">
@@ -366,7 +368,8 @@
                         </div>
 
                         <div class="form-group basic">
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">Tukar</button>
+                            <!-- <button type="submit" class="btn btn-primary btn-block btn-lg">Tukar</button> -->
+                            <button type="submit" onclick="exchange" class="btn btn-primary btn-block btn-lg">Tukar</button>
                         </div>
                     </form>
                 </div>
@@ -374,6 +377,37 @@
         </div>
     </div>
 </div>
+<div class="viewmodal" style="display: none;"></div>
+<script>
+    $("#exchange").submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "post",
+            url: "/user/exch",
+            data: $(this).serialize(),
+            success: function(data) {}
+        });
+    });
+
+    $(document).ready(function() {
+        console.log("ready!");
+        $('.tomboladdcard').click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                url: 'User/addCard1',
+                dataType: "json",
+                success: function($response) {
+                    // $('.viewmodal').html(response.data).show;
+                    $('#modaltambah').modal('show');
+                },
+                error: function(xhr, ajaxOptions, throwError) {
+                    alert(xhr.status + "\n" + xhr.responseText);
+                }
+
+            });
+        });
+    });
+</script>
 <!-- * Exchange Action Sheet -->
 
 <!-- AddCardActionSheet -->
@@ -411,5 +445,6 @@
     </div>
 </div>
 <!-- * AddCardActionSheet -->
+
 
 <?= $this->endSection(); ?>

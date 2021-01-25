@@ -128,6 +128,24 @@ class User extends BaseController
         }
     }
 
+    public function exch()
+    {
+        $dari = $this->request->isAJAX();
+        if (session()->get('ID_User') == '') {
+            session()->setFlashdata('Error', 'Login dulu');
+            return redirect()->to('/login');
+        }
+        $nama = session()->get('Username');
+        $akun = $this->UserModel->cek_login($nama);
+        $dari = $this->request->getVar('dari');
+        $tujuan = $this->request->getVar('tujuan');
+        $jumlah = $this->request->getVar('jumlah');
+        $msg = [
+            'sukses' => "dari $jumlah"
+        ];
+        echo json_encode($msg);
+    }
+
     public function bayar()
     {
         if (session()->get('ID_User') == '') {
@@ -281,6 +299,21 @@ class User extends BaseController
         ]);
         session()->setFlashdata('flash', 'Silahkan Tempel Kartu di Reader');
         return redirect()->to('/');
+    }
+
+    public function addCard1()
+    {
+        if ($this->request->isAJAX()) {
+            $data = [
+                'tampil' => 'hallo'
+            ];
+            $msg = [
+                'data' => view('User/addCard')
+            ];
+            echo json_encode($msg);
+        } else {
+            exit('sorrys');
+        }
     }
 
     public function riwayat()
