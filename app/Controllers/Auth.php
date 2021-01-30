@@ -58,18 +58,18 @@ class Auth extends BaseController
         ])) {
             $validation = \config\Services::validation();
 
-            return redirect()->to('/')->withInput()->with('validation', $validation);
+            return redirect()->to('/user')->withInput()->with('validation', $validation);
         }
         $cek = $this->UserModel->cek_login($email);
         if (empty($cek)) {
             session()->setFlashdata('Error', 'Akun tidak terdaftar');
             $this->IplogModel->save([
                 'IP_ADDR' => $_SERVER['REMOTE_ADDR'],
-                'ID_HOST' =>  gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'ID_HOST' => ($_SERVER['HTTP_USER_AGENT']),
                 'User' => ($email),
                 'Command' => 'Tidak Ada Akun',
             ]);
-            return redirect()->to('/');
+            return redirect()->to('/user');
         }
         $password = password_verify($password, ($cek['Password']));
 
@@ -79,7 +79,7 @@ class Auth extends BaseController
             session()->set('ID_User', $cek['ID_User']);
             $this->IplogModel->save([
                 'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
-                'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'ID_HOST' => $_SERVER['HTTP_USER_AGENT'],
                 'User' => ($email),
                 'Command' => 'Berhasil Masuk',
             ]);
@@ -88,11 +88,11 @@ class Auth extends BaseController
             session()->setFlashdata('Error', 'Username atau Password salah');
             $this->IplogModel->save([
                 'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
-                'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                'ID_HOST' => $_SERVER['HTTP_USER_AGENT'],
                 'User' => ($email),
                 'Command' => 'Password Salah',
             ]);
-            return redirect()->to('/');
+            return redirect()->to('/user');
         }
     }
 
@@ -196,7 +196,7 @@ class Auth extends BaseController
         ]);
         $this->IplogModel->save([
             'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
-            'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'ID_HOST' => $_SERVER['HTTP_USER_AGENT'],
             'User' => ($email),
             'Command' => 'Daftar',
         ]);
@@ -290,7 +290,7 @@ class Auth extends BaseController
 
         $this->IplogModel->save([
             'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
-            'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'ID_HOST' => $_SERVER['HTTP_USER_AGENT'],
             'User' => $cek['Email'],
             'Command' => 'Verivikasi',
         ]);
@@ -305,7 +305,7 @@ class Auth extends BaseController
         $akun = $this->UserModel->cek_login($nama);
         $this->IplogModel->save([
             'IP_ADDR' => ($_SERVER['REMOTE_ADDR']),
-            'ID_HOST' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+            'ID_HOST' => $_SERVER['HTTP_USER_AGENT'],
             'User' => $akun['Email'],
             'Command' => 'Logout',
         ]);

@@ -22,7 +22,7 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
@@ -62,7 +62,7 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
@@ -72,7 +72,7 @@ class User extends BaseController
 
         if ($dari == $tujuan) {
             session()->setFlashdata('Error', 'Dari dan Tujuan tidak boleh sama');
-            return redirect()->to('/');
+            return redirect()->to('/user');
         }
         $dariCard = $this->CardModel->Cari($dari);
         $tujuanCard = $this->CardModel->Cari($tujuan);
@@ -92,10 +92,10 @@ class User extends BaseController
                     'Saldo' => $terima,
                 ]);
                 session()->setFlashdata('flash', 'Saldo telah dipindah');
-                return redirect()->to('/');
+                return redirect()->to('/user');
             } else {
                 session()->setFlashdata('Error2', 'Saldo kurang');
-                return redirect()->to('/');
+                return redirect()->to('/user');
             }
         };
 
@@ -112,7 +112,7 @@ class User extends BaseController
                     'Saldo' => $terima
                 ]);
                 session()->setFlashdata('flash', 'Saldo telah dipindah');
-                return redirect()->to('/');
+                return redirect()->to('/user');
             } else {
                 $terima = $tujuanCard['Saldo'] + $jumlah;
                 $this->CardModel->save([
@@ -120,11 +120,11 @@ class User extends BaseController
                     'Saldo' => $terima
                 ]);
                 session()->setFlashdata('flash', 'Saldo telah dipindah');
-                return redirect()->to('/');
+                return redirect()->to('/user');
             }
         } else {
             session()->setFlashdata('Error2', 'Saldo kurang');
-            return redirect()->to('/');
+            return redirect()->to('/user');
         }
     }
 
@@ -132,7 +132,7 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
@@ -149,7 +149,7 @@ class User extends BaseController
                 $penerima = $this->UserModel->cek_login($tujuan);
                 if (empty($penerima)) {
                     session()->setFlashdata('Error2', 'Nomor tujuan tidak ada');
-                    return redirect()->to('/');
+                    return redirect()->to('/user');
                 } else {
                     $this->UserModel->save([
                         'id' => $akun['id'],
@@ -162,11 +162,11 @@ class User extends BaseController
                         'Saldo' => $saldoAdd,
                     ]);
                     session()->setFlashdata('flash', 'Saldo berhasil di kirim');
-                    return redirect()->to('/');
+                    return redirect()->to('/user');
                 }
             } else {
                 session()->setFlashdata('Error2', 'Saldo kurang');
-                return redirect()->to('/');
+                return redirect()->to('/user');
             }
         } else {
             if ($dariCard['Saldo'] >= $nominal) {
@@ -174,7 +174,7 @@ class User extends BaseController
                 $penerima = $this->UserModel->cek_login($tujuan);
                 if (empty($penerima)) {
                     session()->setFlashdata('Error2', 'Nomor tujuan tidak ada');
-                    return redirect()->to('/');
+                    return redirect()->to('/user');
                 } else {
                     $this->CardModel->save([
                         'id' => $dariCard['id'],
@@ -186,11 +186,11 @@ class User extends BaseController
                         'Saldo' => $saldoAdd,
                     ]);
                     session()->setFlashdata('flash', 'Saldo berhasil di kirim');
-                    return redirect()->to('/');
+                    return redirect()->to('/user');
                 }
             } else {
                 session()->setFlashdata('Error2', 'Saldo kurang');
-                return redirect()->to('/');
+                return redirect()->to('/user');
             }
         }
     }
@@ -199,7 +199,7 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
@@ -220,11 +220,11 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $myCard = $this->CardModel->Cari($id);
         if (empty($myCard)) {
-            return redirect()->to('/');
+            return redirect()->to('/user');
         };
         $this->CardModel->save([
             'id' => $myCard['id'],
@@ -238,11 +238,11 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $myCard = $this->CardModel->Cari($id);
         if (empty($myCard)) {
-            return redirect()->to('/');
+            return redirect()->to('/user');
         };
         $jenis = $this->request->getVar('jenis');
         $ket = $this->request->getVar('Ket');
@@ -261,7 +261,7 @@ class User extends BaseController
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
@@ -271,7 +271,7 @@ class User extends BaseController
         $myCard = $this->ReaderModel->cari($reader);
         if (empty($myCard)) {
             session()->setFlashdata('Error', 'Bukan QR Reader Spairum Pay');
-            return redirect()->to('/');
+            return redirect()->to('/user');
         };
         $this->ReaderModel->save([
             'id' => $myCard['id'],
@@ -280,14 +280,14 @@ class User extends BaseController
             'ID_User' => $akun['ID_User'],
         ]);
         session()->setFlashdata('flash', 'Silahkan Tempel Kartu di Reader');
-        return redirect()->to('/');
+        return redirect()->to('/user');
     }
 
     public function riwayat()
     {
         if (session()->get('ID_User') == '') {
             session()->setFlashdata('Error', 'Login dulu');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $nama = session()->get('Username');
         $akun = $this->UserModel->cek_login($nama);
