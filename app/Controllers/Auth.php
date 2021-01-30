@@ -29,7 +29,7 @@ class Auth extends BaseController
             ];
             return view('Auth/Login', $data);
         } else {
-            return redirect()->to('/');
+            return redirect()->to('/user');
         }
     }
 
@@ -58,7 +58,7 @@ class Auth extends BaseController
         ])) {
             $validation = \config\Services::validation();
 
-            return redirect()->to('/login')->withInput()->with('validation', $validation);
+            return redirect()->to('/')->withInput()->with('validation', $validation);
         }
         $cek = $this->UserModel->cek_login($email);
         if (empty($cek)) {
@@ -69,7 +69,7 @@ class Auth extends BaseController
                 'User' => ($email),
                 'Command' => 'Tidak Ada Akun',
             ]);
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
         $password = password_verify($password, ($cek['Password']));
 
@@ -83,7 +83,7 @@ class Auth extends BaseController
                 'User' => ($email),
                 'Command' => 'Berhasil Masuk',
             ]);
-            return redirect()->to('/');
+            return redirect()->to('/user');
         } else {
             session()->setFlashdata('Error', 'Username atau Password salah');
             $this->IplogModel->save([
@@ -92,7 +92,7 @@ class Auth extends BaseController
                 'User' => ($email),
                 'Command' => 'Password Salah',
             ]);
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
     }
 
@@ -108,7 +108,7 @@ class Auth extends BaseController
 
             return view('Auth/Register', $data);
         } else {
-            return redirect()->to('/');
+            return redirect()->to('/user');
         }
     }
 
@@ -260,7 +260,7 @@ class Auth extends BaseController
         );
         $this->email->send();
         session()->setFlashdata('Berhasil', 'Silakan cek kotak masuk email atau spam untuk verifikasi akun.');
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
     //--------------------------------------------------------------------
     public function otp($link)
@@ -268,7 +268,7 @@ class Auth extends BaseController
         $cek = $this->OtpModel->cek($link);
         if (empty($cek)) {
             session()->setFlashdata('Error', 'Akun sudah di verifikasi');
-            return redirect()->to('/login');
+            return redirect()->to('/');
         }
 
         $this->UserModel->save([
@@ -295,7 +295,7 @@ class Auth extends BaseController
             'Command' => 'Verivikasi',
         ]);
         session()->setFlashdata('Berhasil', 'Registration success silahkan login.');
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
     public function logout()
     {
@@ -311,6 +311,6 @@ class Auth extends BaseController
         ]);
         session()->setFlashdata('Berhasil', 'Berhasil Logout');
         session_destroy();
-        return redirect()->to('/login');
+        return redirect()->to('/');
     }
 }

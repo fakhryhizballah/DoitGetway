@@ -56,7 +56,7 @@
 
     <!-- App Bottom Menu -->
     <div class="appBottomMenu">
-        <a href="/" class="item">
+        <a href="/user" class="item">
             <div class="col">
                 <ion-icon name="wallet-outline"></ion-icon>
                 <strong>Dompet Saya</strong>
@@ -152,7 +152,7 @@
                     <div class="listview-title mt-1">Menu</div>
                     <ul class="listview flush transparent no-line image-listview">
                         <li>
-                            <a href="/" class="item ">
+                            <a href="/user" class="item ">
                                 <div class="icon-box bg-primary">
                                     <ion-icon name="wallet-outline"></ion-icon>
                                 </div>
