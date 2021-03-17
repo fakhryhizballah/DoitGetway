@@ -40,6 +40,8 @@ $routes->get('/QR', 'User::scanLayout');
 $routes->get('/', 'Auth::index');
 $routes->get('/daftar', 'Auth::registrasi');
 $routes->get('/otp/(:any)', 'Auth::otp/$1');
+$routes->get('/lupapassword', 'Auth::lupapas');
+$routes->get('/otplupapass/(:any)/', 'Auth::otplupapass/$1');
 
 $routes->get('ReaderAPI/mesin/(:segment)', 'ReaderAPI::mesin/$1');
 

@@ -9,7 +9,7 @@
     </div>
     <div class="pageTitle"></div>
     <div class="right">
-        <a href="/login" class="headerButton">
+        <a href="/" class="headerButton">
             Login
         </a>
     </div>

@@ -54,7 +54,7 @@
             <div>
                 <a href="/daftar">Daftar Sekarang</a>
             </div>
-            <div><a href="app-forgot-password.html" class="text-muted">Lupa Password</a></div>
+            <div><a href="/lupapassword" class="text-muted">Lupa Password</a></div>
         </div>
 
     </div>
