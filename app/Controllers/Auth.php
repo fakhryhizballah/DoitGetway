@@ -455,9 +455,9 @@ class Auth extends BaseController
             'email' => $cek_user['Email'],
             'token' => $link
         ];
-        // session()->set('ID_Userakun', $cek_user['id']);
-        // session()->set('ID_otp', $cek['id']);
-        // session()->set('email', $cek_user['Email']);
+        session()->set('ID_Userakun', $cek_user['id']);
+        session()->set('ID_otp', $cek['id']);
+        session()->set('email', $cek_user['Email']);
         session()->set($setSession);
         return view('Auth/GantiPass', $data);
     }
