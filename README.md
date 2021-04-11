@@ -23,3 +23,9 @@ mulai dari versi 0.0.1 catatan baru di buta pada tanggal 16-3-2021
 ### Fixed
 
 - Auth Login
+
+## [v0.0.3] 11-04-2021
+
+### Added
+
+- New Email service
