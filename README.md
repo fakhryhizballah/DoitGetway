@@ -29,3 +29,9 @@ mulai dari versi 0.0.1 catatan baru di buta pada tanggal 16-3-2021
 ### Added
 
 - New Email service
+
+## [v0.0.4] 1-05-2021
+
+### Change
+
+- Update Email Send from Gmail

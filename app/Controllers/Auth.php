@@ -200,7 +200,7 @@ class Auth extends BaseController
             'User' => ($email),
             'Command' => 'Daftar',
         ]);
-        $this->email->setFrom('support@spairum.com', 'noreply-spairum');
+        $this->email->setFrom('duitdfs@gmail.com', 'noreply-DoitGatewy');
         $this->email->setTo($email);
         $this->email->setSubject('OTP Verification Akun');
         $this->email->setMessage(
@@ -211,13 +211,13 @@ class Auth extends BaseController
                 <table cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#ffffff' style='max-width: 650px; margin: auto;'>
                 <tr>
                     <td colspan='2' align='center' style='background-color: #0d8eff; padding: 40px;'>
-                        <a href='http://spairum.com/' target='_blank'><img src='https://spairum.com/Asset/img/spairum.png' width='50%' border='0' /></a>
+                        <a href='http://spairum.my.id/' target='_blank'><img src='https://spairum.my.id/Asset/img/spairum.png' width='50%' border='0' /></a>
                     </td>
                 </tr>
                 <tr>
                     <td colspan='2' align='center' style='padding: 50px 50px 0px 50px;'>
                         <h1 style='padding-right: 0em; margin: 0; line-height: 40px; font-weight:300; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 1em;'>
-                            Spairum Pay IS Email OTP
+                            DoitGateway IS Email OTP
                         </h1>
                     </td>
                 </tr>
@@ -244,7 +244,7 @@ class Auth extends BaseController
                     <td colspan='2' align='center' style='padding: 20px 40px 40px 40px;' bgcolor='#f0f0f0'>
                         <p style='font-size: 12px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #777;'>
                             &copy; 2020
-                            <a href='https://spairum.com/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
+                            <a href='https://spairum.my.id/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
                             <br>
                             Jl.Merdeka, Pontianak - Kalimantan Barat
                             <br>
@@ -373,9 +373,9 @@ class Auth extends BaseController
             'Command' => 'Mengganti akun',
         ]);
 
-        $this->email->setFrom('support@spairum.com', 'noreply-spairum');
+        $this->email->setFrom('duitdfs@gmail.com', 'noreply-DpitGateway');
         $this->email->setTo($email);
-        $this->email->setSubject('OTP Verification Akun');
+        $this->email->setSubject('OTP Lupa Password - Verification Akun');
         $this->email->setMessage(
             "   
             <table align='center' cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#f0f0f0'>
@@ -384,7 +384,7 @@ class Auth extends BaseController
                 <table cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#ffffff' style='max-width: 650px; margin: auto;'>
                 <tr>
                     <td colspan='2' align='center' style='background-color: #0d8eff; padding: 40px;'>
-                        <a href='http://spairum.com/' target='_blank'><img src='https://spairum.com/Asset/img/spairum.png' width='50%' border='0' /></a>
+                        <a href='https://spairum.my.id/' target='_blank'><img src='https://spairum.my.id/Asset/img/spairum.png' width='50%' border='0' /></a>
                     </td>
                 </tr>
                 <tr>
@@ -402,7 +402,7 @@ class Auth extends BaseController
                         <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
                         Terimakasih telah mendaftar silahkan melakukan verifikasi pada tautan dibawah :
                         </p>
-                        <a href='https://pay.spairum.com/otplupapass/$token' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Ganti Password sekarang</a>
+                        <a href='https://doit.spairum.my.id/otplupapass/$token' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Ganti Password sekarang</a>
                         <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'><br/>Selanjutnya anda dapat melakukan login ke apps.spairum.com sebagai user</p>
                     </td>
                 </tr>
@@ -417,7 +417,7 @@ class Auth extends BaseController
                     <td colspan='2' align='center' style='padding: 20px 40px 40px 40px;' bgcolor='#f0f0f0'>
                         <p style='font-size: 12px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #777;'>
                             &copy; 2020
-                            <a href='https://spairum.com/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
+                            <a href='https://spairum.my.id/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
                             <br>
                             Jl.Merdeka, Pontianak - Kalimantan Barat
                             <br>
