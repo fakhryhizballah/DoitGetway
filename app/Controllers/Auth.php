@@ -117,7 +117,7 @@ class Auth extends BaseController
         //validasi
         if (!$this->validate([
             'username' => [
-                'rules'  => 'required|alpha_dash|is_unique[otp.Username]',
+                'rules'  => 'required|alpha_dash|is_unique[tb_user.Username]',
                 'errors' => [
                     'required' => '{field} wajid di isi',
                     'alpha_dash' => 'Tidak boleh mengunakan spasi',
@@ -137,7 +137,7 @@ class Auth extends BaseController
                 ]
             ],
             'email' => [
-                'rules'  => 'required|valid_email|is_unique[otp.Email]',
+                'rules'  => 'required|valid_email|is_unique[tb_user.Email]',
                 'errors' => [
                     'required' => '{field} wajid di isi',
                     'valid_email' => 'alamat email tidak benar',
@@ -145,7 +145,7 @@ class Auth extends BaseController
                 ]
             ],
             'telp' => [
-                'rules'  => 'required|is_natural|min_length[10]|is_unique[otp.Telp]',
+                'rules'  => 'required|is_natural|min_length[10]|is_unique[tb_user   .Telp]',
                 'errors' => [
                     'required' => 'nomor telpon wajid di isi',
                     'is_natural' => 'nomor telpon tidak benar',

@@ -44,3 +44,4 @@ mulai dari versi 0.0.1 catatan baru di buta pada tanggal 16-3-2021
 ### Fixed
 
 - Email akun
+- Cek Id dari User
