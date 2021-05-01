@@ -201,7 +201,7 @@ class Auth extends BaseController
             'User' => ($email),
             'Command' => 'Daftar',
         ]);
-        $this->email->setFrom('duitdfs@gmail.com', 'noreply-DoitGatewy');
+        $this->email->setFrom('infospairum@gmail.com', 'noreply-DoitGatewy');
         $this->email->setTo($email);
         $this->email->setSubject('OTP Verification Akun');
         $this->email->setMessage(
@@ -374,7 +374,7 @@ class Auth extends BaseController
             'Command' => 'Mengganti akun',
         ]);
 
-        $this->email->setFrom('duitdfs@gmail.com', 'noreply-DpitGateway');
+        $this->email->setFrom('infospairum@gmail.com', 'noreply-DpitGateway');
         $this->email->setTo($email);
         $this->email->setSubject('OTP Lupa Password - Verification Akun');
         $this->email->setMessage(
@@ -508,6 +508,70 @@ class Auth extends BaseController
         ]);
         session_destroy();
         session()->setFlashdata('Berhasil', 'Passwod anda berhasil di perbahrui.');
+        return redirect()->to('/');
+    }
+    public function email()
+    {
+        $this->email->setFrom('infospairum@gmail.com', 'noreply-DoitGatewy');
+        $this->email->setTo('infospairum@gmail.com');
+        $this->email->setSubject('OTP Verification Akun');
+        $this->email->setMessage(
+            "   
+            <table align='center' cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#f0f0f0'>
+            <tr>
+            <td style='padding: 30px 30px 20px 30px;'>
+                <table cellpadding='0' cellspacing='0' border='0' width='100%' bgcolor='#ffffff' style='max-width: 650px; margin: auto;'>
+                <tr>
+                    <td colspan='2' align='center' style='background-color: #0d8eff; padding: 40px;'>
+                        <a href='http://spairum.my.id/' target='_blank'><img src='https://spairum.my.id/Asset/img/spairum.png' width='50%' border='0' /></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2' align='center' style='padding: 50px 50px 0px 50px;'>
+                        <h1 style='padding-right: 0em; margin: 0; line-height: 40px; font-weight:300; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 1em;'>
+                            DoitGateway IS Email OTP
+                        </h1>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='text-align: left; padding: 0px 50px;' valign='top'>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
+                            Hi jancok,
+                        </p>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'>
+                        Terimakasih telah mendaftar silahkan melakukan verifikasi pada tautan dibawah :
+                        </p>
+                        <a href='https://pay.spairum.my.id/otp' style='display:block;width:115px;height:25px;background:#0008ff;padding:10px;text-align:center;border-radius:5px;color:white;font-weight:bold'> Verivikasi</a>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #666; text-align: left; padding-bottom: 3%;'><br/>Selanjutnya anda dapat melakukan login ke apps.spairum.com sebagai user</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style='text-align: left; padding: 30px 50px 50px 50px' valign='top'>
+                        <p style='font-size: 18px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #505050; text-align: left;'>
+                            Thanks,<br/>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan='2' align='center' style='padding: 20px 40px 40px 40px;' bgcolor='#f0f0f0'>
+                        <p style='font-size: 12px; margin: 0; line-height: 24px; font-family: 'Nunito Sans', Arial, Verdana, Helvetica, sans-serif; color: #777;'>
+                            &copy; 2020
+                            <a href='https://spairum.my.id/about' target='_blank' style='color: #777; text-decoration: none'>Spairum-Pay</a>
+                            <br>
+                            Jl.Merdeka, Pontianak - Kalimantan Barat
+                            <br>
+                            Indonesia
+                        </p>
+                    </td>
+                </tr>
+                </table>
+            </td>
+            </tr>
+            </table>
+            "
+        );
+        $this->email->send();
+        session()->setFlashdata('Berhasil', 'Silakan cek kotak masuk email atau spam untuk verifikasi akun.');
         return redirect()->to('/');
     }
 }
