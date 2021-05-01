@@ -36,3 +36,11 @@ mulai dari versi 0.0.1 catatan baru di buta pada tanggal 16-3-2021
 
 - Update Email Send from Gmail
 - Update Email registrasi
+
+### Added
+
+- Random ID
+
+### Fixed
+
+- Email akun

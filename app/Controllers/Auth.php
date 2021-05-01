@@ -176,14 +176,15 @@ class Auth extends BaseController
         // dd($this->request->getVar());
 
         $Username = $this->request->getVar('username');
-        $id_user = substr(sha1($Username), 0, 8);
+        $id_user = strtoupper(substr(sha1($Username), 0, 8));
         helper('text');
         $token = random_string('alnum', 28);
+        $tokenid = strtoupper(random_string('alnum', 4));
         $email = $this->request->getVar('email');
         $nama_depan = ucwords($this->request->getVar('nama_depan'));
         $nama_belakang = ucwords($this->request->getVar('nama_belakang'));
         $this->OtpModel->save([
-            'ID_User' => strtoupper($id_user),
+            'ID_User' => "$id_user$tokenid",
             'Username' => $Username,
             'Email' => $email,
             'Nama_Depan' => $nama_depan,
