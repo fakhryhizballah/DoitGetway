@@ -513,7 +513,7 @@ class Auth extends BaseController
     public function email()
     {
         $this->email->setFrom('infospairum@gmail.com', 'noreply-DoitGatewy');
-        $this->email->setTo('infospairum@gmail.com');
+        $this->email->setTo('falehry88@gmail.com');
         $this->email->setSubject('OTP Verification Akun');
         $this->email->setMessage(
             "   
